@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block favicon %}{% static 'Images/maindashboard.png' %}{% endblock %}
+{% block content %}
+    
+    <!-- Start content -->
+    <div class="content" id="mainContent">
+        {% include 'parts/alerts.html' %}
+        <div class="head">
+            <h2>Customer Service System  (CSS) </h2>
+            <p>Welcome to the Customer Service System (CRM)</p>
+            <img style="width: 550px; height:400px;" src="{% static 'Images/Welcome.png' %}" alt="Logo">
+        </div>
+    </div>
+    <!-- End content -->
+    {% endblock %}

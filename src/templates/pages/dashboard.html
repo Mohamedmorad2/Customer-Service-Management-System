@@ -1,0 +1,113 @@
+{% extends 'base_dashboard.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+{% block favicon %}{% static 'Images/Dashboard.png' %}{% endblock %}
+{% block content %}
+
+<!-- Start content -->
+<div class="content" id="mainContent">
+    
+    <div class="dashboard">
+        <div class="box card-rentals">
+            <h5>Total Expenses</h5>
+            <h3>${{ total_expenses }}</h3>
+        </div>
+        <div class="box card-rentals-today">
+            <h5>Total Orders</h5>
+            <h3>{{ total_orders }}</h3>
+        </div>
+        <div class="box card-customers">
+            <h5>Total Customers</h5>
+            <h3>{{ total_customers }}</h3>
+        </div>
+        <div class="box card-attendance">
+            <h5>Total Reviews</h5>
+            <h3>{{ total_reviews }}</h3>
+        </div>
+    </div>
+    <!-- Charts -->
+    <div class="charts">
+        <div class="chart-container">
+            <canvas id="doughnutChart"></canvas>
+        </div>
+        <div class="chart-container-line">
+            <canvas id="lineChart"></canvas>
+        </div>
+    </div>
+    <div class="chart-container-bar">
+        <canvas id="barChart"></canvas>
+    </div>
+<!-- End content -->
+
+<script>
+
+    const doughnutCtx = document.getElementById('doughnutChart').getContext('2d');
+    const doughnutChart = new Chart(doughnutCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Total Expenses', 'Total Orders'],
+            datasets: [{
+                data: [{{ total_expenses }}, {{ total_orders }}], 
+                backgroundColor: ['#d4edda', '#cce5ff'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+            }
+        }
+    });
+
+
+    const lineCtx = document.getElementById('lineChart').getContext('2d');
+    const lineChart = new Chart(lineCtx, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            datasets: [{
+                label: 'Monthly Expenses',
+                data: [{{ total_expenses }}],
+                borderColor: '#007bff',
+                backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                fill: true,
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+            }
+        }
+    });
+
+
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    const barChart = new Chart(barCtx, {
+        type: 'bar',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            datasets: [{
+                label: 'Total Orders',
+                data: [{{ total_orders }}],
+                backgroundColor: '#28a745',
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+            }
+        }
+    });
+</script>
+
+
+{% endblock %}

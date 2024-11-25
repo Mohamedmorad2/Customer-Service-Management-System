@@ -1,0 +1,54 @@
+{% extends 'base_tables.html' %}
+{% load static %}
+{% block title %}Operations list{% endblock %}
+{% block favicon %}{% static 'Images/operation.png' %}{% endblock %}
+{% block content %}
+
+
+<!-- Start content -->
+<div class="content" id="mainContent">
+
+    <!-- End search-filter -->
+    {%include 'parts/alerts.html'%}
+    <!-- Start table -->
+    <div class="table-container">
+        <section class="table">
+            <table id="example" class="cell-border" style="width:100%">
+                <h1 style="text-align: center; margin-top:15px; color:#023047; font-size:30px;">Operations list</h1>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User ID</th>
+                        <th>User Name</th>
+                        <th>Action Type</th>
+                        <th>Action Time</th>
+                        <th>Code</th>
+                        <th>App Name</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for useraction in useractions %} 
+                    <tr>
+                        <td>{{ useraction.id }}</td> 
+                        <td>{{ useraction.user_id }}</td> 
+                        <td>{{ useraction.user }}</td>
+                        <td>{{ useraction.action_type }}</td>
+                        <td>{{ useraction.action_time|date:"d/m/Y - h:i:s A" }}</td>
+                        <td>{{ useraction.code }}</td>
+                        <td>{{ useraction.app_name }}</td>
+                        <td>{{ useraction.details }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            
+        </section> 
+    </div>
+    <!-- End table -->
+</div>
+<!-- End content -->
+
+
+{% endblock %}

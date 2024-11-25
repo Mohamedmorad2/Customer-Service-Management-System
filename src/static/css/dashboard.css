@@ -1,0 +1,102 @@
+/* Dashboard-specific Styles */
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.box {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 20%;
+    padding: 15px;
+    margin-left: 30px;
+    text-align: center;
+}
+
+.box h5 {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.box h3 {
+    font-size: 24px;
+    margin: 0;
+    color: #ffffff;
+}
+
+/* Box-specific Card Styles */
+.card-rentals {
+    background: linear-gradient(135deg, #4a90e2, #50e3c2);
+}
+
+.card-rentals-today {
+    background: linear-gradient(135deg, #f5a623, #f8e71c);
+}
+
+.card-checkin {
+    background: linear-gradient(135deg, #7ed321, #4a90e2);
+}
+
+.card-checkout {
+    background: linear-gradient(135deg, #d0021b, #f5a623);
+}
+
+.card-attendance {
+    background: linear-gradient(135deg, #8e44ad, #3498db);
+}
+
+.card-absence {
+    background: linear-gradient(135deg, #e74c3c, #e67e22);
+}
+
+.card-customers {
+    background: linear-gradient(135deg, #2ecc71, #1abc9c);
+}
+
+
+
+/* Chart-specific Styles */
+.charts {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.chart-container {
+    width: 45%; 
+    height: 80%;
+    margin-left: 30px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.chart-container-line {
+    width: 45%; 
+    height: 80%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.chart-container-bar {
+    width: 80%; 
+    margin: 40px auto; 
+    margin-top: 0px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+
+.chart-container,
+.chart-container-line,
+.chart-container-bar {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}

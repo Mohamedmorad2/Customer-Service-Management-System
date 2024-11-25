@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Update Expense{% endblock %}
+{% block favicon %}{% static 'Images/wallet.png' %}{% endblock %}
+{% block content %}
+
+    <!-- Start content -->
+    <div class="content" id="mainContent">
+        <h1 style="text-align: center; margin-top:15px; color:#023047;">Update Expense</h1>
+        {%include 'parts/alerts.html'%}
+        <div class="container">
+            <form id="expense_form" method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="box" style="margin-left: 80px;">
+                    <label for="Product" style="margin-left: 0px;">Select Product</label>
+                    <select id="Product" name="Product" required>
+                        <option value="">Select Product</option>
+                        <option value="Mug" {% if expense.product == 'Mug' %}selected{% endif %}>Mug</option>
+                        <option value="Magic Mug" {% if expense.product == 'Magic Mug' %}selected{% endif %}>Magic Mug</option>
+                        <option value="T-shirt printing" {% if expense.product == 'T-shirt printing' %}selected{% endif %}>T-shirt printing</option>
+                        <option value="Tableau" {% if expense.product == 'Tableau' %}selected{% endif %}>Tableau</option>
+                        <option value="Sticker" {% if expense.product == 'Sticker' %}selected{% endif %}>Sticker</option>
+                    </select>
+                </div>
+
+                <div class="box" style="margin-left: 40px;">
+                    <label for="Quantity">Quantity</label>
+                    <input type="text" id="quantity" name="Quantity" placeholder="Enter Quantity" value="{{ expense.quantity }}" required>    
+                </div>
+
+                <div class="box" style="margin-left: 40px;">
+                    <label for="Product Price">Product Price</label>
+                    <input type="text" id="product_price" name="product_price" placeholder="Enter Product Price" value="{{ expense.product_price }}" required>
+                </div>
+
+                <div class="box" style="margin-left: 40px;">
+                    <label for="Purchase Date">Purchase Date</label>
+                    <input type="date" id="purchase_date" name="purchase_date" value="{{ expense.purchase_date }}" required>
+                </div>
+
+                <div class="box" style="margin-left: 40px;">
+                    <label for="Total Price">Total Price</label>
+                    <input type="text" id="total_price" name="Total_Price" placeholder="Enter Total Price" value="{{ expense.total_price }}" required>
+                </div>
+
+                <div class="box" style="margin-left: 80px;">
+                    <label for="status" style="margin-left: 0px;">Status</label>
+                    <select id="status" name="Status" required>
+                        <option value="">Select Status</option>
+                        <option value="request" {% if expense.status == 'request' %}selected{% endif %}>Request</option>
+                        <option value="pending" {% if expense.status == 'pending' %}selected{% endif %}>Pending</option>
+                        <option value="approve" {% if expense.status == 'approve' %}selected{% endif %}>Approve</option>
+                        <option value="cancel" {% if expense.status == 'cancel' %}selected{% endif %}>Cancel</option>
+                    </select>
+                </div>
+
+                <div class="box" style="margin-left: 40px;">
+                    <label for="imageUpload">Invoice Image</label>
+                    {% if expense.screenshot %}  
+                        <img src="{{ expense.screenshot.url }}" alt="Current Image" style="max-width: 120px; max-height: 100px;"><br> 
+                    {% endif %}
+                    <input type="file" id="imageUpload" name="image" accept="image/*"><br><br>
+                </div>
+
+                <div class="box" style="margin-left: 40px;">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" name="notes" rows="4" cols="50" placeholder="Notes">{{ expense.notes }}</textarea><br><br>
+                </div>
+
+                <button type="submit" id="submit">Update</button>
+            </form>
+        </div>
+    </div>
+    <!-- End content -->
+
+{% endblock %}

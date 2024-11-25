@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Update Customer{% endblock %}
+{% block favicon %}{% static 'Images/add-Customer.png' %}{% endblock %}
+{% block content %}
+    
+    <!-- Start content -->
+    <div class="content" id="mainContent">
+        <h1 style="text-align: center; margin-top:15px; color:#023047;">Update Customer</h1>
+        {%include 'parts/alerts.html'%}
+        <div class="container">
+            <form id="customer_form" method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="box" style="margin-left: 40px;">
+                    <label for="name">Enter Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter Name" value="{{ customer.name }}" required>
+                </div>
+
+                <div class="box" style="margin-left: 40px;">
+                    <label for="phone_number">Phone Number</label>
+                    <input type="text" id="phone_number" name="phone_number" placeholder="Enter Phone Number" value="{{ customer.phone_number }}" required>    
+                </div>
+            
+                <div class="box" style="margin-left: 40px;">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" placeholder="Enter Age" value="{{ customer.age }}" required>
+                </div>
+
+                <div class="box" style="margin-left: 40px;">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" placeholder="Enter Address" value="{{ customer.address }}" required>
+                </div>
+
+                <div class="box" style="margin-left: 80px;">
+                    <label for="interest" style="margin-left: 0px;">Interest</label>
+                    <select id="interest" name="Interest" required>
+                        <option value="">Select</option>
+                        <option value="Programming" {% if customer.interest == 'Programming' %}selected{% endif %}>Programming</option>
+                        <option value="Design" {% if customer.interest == 'Design' %}selected{% endif %}>Design</option>
+                        <option value="Marketing" {% if customer.interest == 'Marketing' %}selected{% endif %}>Marketing</option>
+                        <option value="Business" {% if customer.interest == 'Business' %}selected{% endif %}>Business</option>
+                        <option value="Other" {% if customer.interest == 'Other' %}selected{% endif %}>Other</option>
+                    </select>
+                </div>
+
+                <div class="box" style="margin-left: 80px;">
+                    <label for="howDidWeKnow" style="margin-left: 0px;">How did we know</label>
+                    <select id="howDidWeKnow" name="howDidWeKnow" required>
+                        <option value="">Select</option>
+                        <option value="Facebook" {% if customer.howDidWeKnow == 'Facebook' %}selected{% endif %}>Facebook</option>
+                        <option value="Instagram" {% if customer.howDidWeKnow == 'Instagram' %}selected{% endif %}>Instagram</option>
+                        <option value="TikTok" {% if customer.howDidWeKnow == 'TikTok' %}selected{% endif %}>TikTok</option>
+                        <option value="Friend" {% if customer.howDidWeKnow == 'Friend' %}selected{% endif %}>Friend</option>
+                        <option value="Other" {% if customer.howDidWeKnow == 'Other' %}selected{% endif %}>Other</option>
+                    </select>
+                </div>
+                
+                <div class="box" style="margin-left: 40px;">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" name="notes" rows="4" cols="50" placeholder="Notes">{{ customer.notes }}</textarea><br><br>
+                </div>
+            
+                <div class="box" style="margin-left: 40px;">
+                    <label for="imageUpload">Upload Screenshot</label>
+                    {% if customer.screenshot %}  
+                        <img src="{{ customer.screenshot.url }}" alt="Current Image" style="max-width: 120px; max-height: 100px;"><br> 
+                    {% endif %}
+                    <input type="file" id="imageUpload" name="image" accept="image/*"><br><br>
+                </div>
+                
+            
+            
+                <button type="submit" id="submit">Update</button>
+            </form>
+        </div>
+    </div>
+    <!-- End content -->
+
+{% endblock %}

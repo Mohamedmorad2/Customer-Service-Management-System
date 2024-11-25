@@ -1,0 +1,50 @@
+{% extends 'base_tables.html' %}
+{% load static %}
+{% block title %}Admin Logs{% endblock %}
+{% block favicon %}{% static 'Images/log-file.png' %}{% endblock %}
+{% block content %}
+
+<!-- Start content -->
+<div class="content" id="mainContent">
+
+    <!-- Start table -->
+    <div class="table-container">
+        <h1 style="text-align: center; margin-top:15px; color:#023047;">Admin Logs</h1>
+        <section class="table">
+            <table id="example" class="cell-border" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Object ID</th>
+                        <th>Object Repr</th>
+                        <th>Action Flig</th>
+                        <th>Change Message</th>
+                        <th>User ID</th>
+                        <th>Username</th>
+                        <th>Action Time </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in django_auth_log %}
+                        <tr>
+                            <td>{{ log.id }}</td>
+                            <td>{{ log.object_id }}</td>
+                            <td>{{ log.object_repr}}</td>
+                            <td>{{ log.action_flag}}</td>
+                            <td>{{ log.change_message}}</td>
+                            <td>{{ log.user_id }}</td>
+                            <td>{{ log.user.username }}</td> 
+                            <td>{{ log.action_time|date:"d/m/Y - h:i:s A" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+        </section> 
+    </div>
+    <!-- End table -->
+
+</div>
+<!-- End content -->
+
+{% endblock %}

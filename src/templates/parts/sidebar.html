@@ -1,0 +1,104 @@
+{% load static %}
+<body onload="toggleSidebar()">
+    <!-- Start sidebar -->
+    <div class="side_bar"> 
+        <aside id="sidebar" class="sidebar">
+            <ul class="sidebar-nav" id="sidebar-nav">
+                <!-- Start Dashboard -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}">
+                        <img src="{% static 'Images/Dashboard.png' %}" alt="Dashboard">
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <!-- End Dashboard -->
+
+                <!-- Start Customers-->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="{% static 'Images/social-network.png' %}" alt="Customers">
+                        <span>Customers</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{% url 'create_customer' %}"><img src="{% static 'Images/add-Customer.png' %}" alt="Add Customer">Add Customer</a></li>
+                        <li><a href="{% url 'customers' %}"><img src="{% static 'Images/Customers.png' %}" alt="Customers">Customers</a></li>
+                    </ul>
+                </li>
+                <!-- End Customers -->
+                
+                <!-- Start Orders -->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="{% static 'Images/checklist.png' %}" alt="Orders">
+                        <span>Orders</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{% url 'create_order'%}"><img src="{% static 'Images/add-to-cart.png' %}" alt="Add Order">Add Order</a></li>
+                        <li><a href="{% url 'orders'%}"><img src="{% static 'Images/order.png' %}" alt="Orders ">Orders</a></li>
+                    </ul>
+                </li>
+                <!-- End Orders  -->
+                
+                <!-- Start Finances -->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="{% static 'Images/hand.png' %}" alt="Finances">
+                        <span>Finances</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{% url 'create_expense' %}"><img src="{% static 'Images/wallet.png' %}" alt="Add Expense">Add Expense</a></li>
+                        <li><a href="{% url 'expenses' %}"><img src="{% static 'Images/spending.png' %}" alt="Total Expenses">Total Expenses</a></li>
+                        <li><a href="{% url 'total_sales' %}"><img src="{% static 'Images/buy.png' %}" alt="Total Sales">Total Sales</a></li>
+                    </ul>
+                </li>
+                <!-- End Finances -->
+
+                <!-- Start Review -->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="{% static 'Images/review.png' %}" alt="Review">
+                        <span>Review</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{%url 'create_review'%}"><img src="{% static 'Images/complaint.png' %}" alt="Add Review">Add Review</a></li>
+                        <li><a href="{%url 'reviews'%}"><img src="{% static 'Images/satisfaction.png' %}" alt="Review">Reviews</a></li>
+                    </ul>
+                </li>
+                <!-- End Review -->
+                
+                <!-- Start Reports -->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="{% static 'Images/report.png' %}" alt="Reports">
+                        <span>Reports</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#"><img src="{% static 'Images/report.png' %}" alt="Report Login">Report </a></li>
+                    </ul>
+                </li>
+                <!-- End Reports -->
+                
+                <!-- Start Account Management -->
+                {% if request.user.is_staff or is_admin %}  
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="{% static 'Images/managing.png' %}" alt="Account Management">
+                        <span>Account Management</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{% url 'create_user' %}"><img src="{% static 'Images/add-user.png' %}" alt="Add User">Add User</a></li>
+                        <li><a href="{% url 'users' %}"><img src="{% static 'Images/Users.png' %}" alt="Users">Users</a></li>
+                        <li><a href="{% url 'logs' %}"><img src="{% static 'Images/log-file.png' %}" alt="Logs">Logs</a></li>
+                        <li><a href="{% url 'admin_logs' %}"><img src="{% static 'Images/log-file.png' %}" alt="Admin Logs">Admin Logs</a></li>
+                        <li><a href="{% url 'operations_list' %}"><img src="{% static 'Images/operation.png' %}" alt="Operations list">Operations list</a></li>
+                        <li><a href="{% url 'emails'%}"><img src="{% static 'Images/delivery.png' %}" alt="Email Sender">Email Sender</a></li>
+                        <li><a href="#"><img src="{% static 'Images/permissions.png' %}" alt="Permission">Permission</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+                <!-- End Account Management -->
+
+            </ul>
+        </aside>
+    </div>
+    <!-- End sidebar -->

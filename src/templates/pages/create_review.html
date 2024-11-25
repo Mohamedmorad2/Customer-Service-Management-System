@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Create Review{% endblock %}
+{% block favicon %}{% static 'Images/complaint.png' %}{% endblock %}
+{% block content %}
+
+<div class="content" id="mainContent">
+    <h1 style="text-align: center; margin-top:15px; color:#023047;">Create Review</h1>
+    {%include 'parts/alerts.html'%}
+    <div class="container">
+        <form id="review_form" method='POST' enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="box" style="width: 300px; margin-left: 80px;">
+                <label for="order" style="margin-left: 0px;">Select Order</label>
+                <select id="order" style="width: 380px;" name="order" onchange="updateCustomerInfo()" required>
+                    <option value="">Select Order</option>
+                    {% for order in orders %}
+                    <option value="{{ order.id }}" data-order="{{ order.order_type }}" data-product-price="{{ order.product_price }}" data-shipping-price="{{ order.shipping_price }}">
+                        {{ order.name }} || {{ order.order_type }} || {{ order.code }} || {{ order.created_at|date:"d/m/Y" }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+
+            <div class="box" style="margin-left: 40px;" style="margin-left: 40px;">
+                <label for="order_type">Type Order</label>
+                <input type="text" id="order_type" name="order_type" placeholder="Enter Product Price" required>
+            </div>
+
+            <div class="box" style="margin-left: 40px;" style="margin-left: 40px;">
+                <label for="product_price">Product Price</label>
+                <input type="number" id="product_price" name="product_price" placeholder="Enter Product Price" required>
+            </div>
+
+            <div class="box" style="height:80px; margin-left: 40px;" style="margin-left: 40px;">
+                <label for="shipping_price">Shipping Price</label>
+                <input type="number" id="shipping_price" name="shipping_price" placeholder="Enter Shipping Price" required>
+            </div>
+
+            <div class="box" style="margin-left: 80px;">
+                <label for="evaluation_authority" style="margin-left: 0px;">Evaluation Authority</label>
+                <select id="evaluation_authority" name="evaluation_authority" required>
+                    <option value="">Select</option>
+                    <option value="Phone">Phone</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="box" style="margin-left: 40px;">
+                <label for="review">Review</label>
+                <textarea id="review" name="review" rows="4" cols="50" placeholder="Write your review here"></textarea><br><br>
+            </div>
+        
+            <div class="box" style="margin-left: 40px; width:290px;">
+                <label id='label_img' for="imageUpload">Screenshot</label>
+                <input type="file" id="imageUpload" name="image" accept="image/*"><br><br>
+            </div>
+        
+
+            <button type="submit" id="submit">Save Review</button>
+        </form>
+    </div>
+    {% if order_info %}
+        <h2>Order Information</h2>
+        <p>Order Type: {{ order_info.order_type }}</p>
+        <p>Product Price: {{ order_info.product_price }}</p>
+        <p>Shipping Price: {{ order_info.shipping_price }}</p>
+        <p>code: {{ order_info.code }}</p>
+    {% elif order_info is None %}
+{% endif %}
+
+</div>
+
+
+<script>
+
+    function updateCustomerInfo() {
+        var select = document.getElementById('order');
+        var selectedOption = select.options[select.selectedIndex];
+    
+        if (selectedOption.value) {
+            var orderType = selectedOption.getAttribute('data-order');
+            var productPrice = selectedOption.getAttribute('data-product-price');
+            var shippingPrice = selectedOption.getAttribute('data-shipping-price');
+    
+            document.getElementById('order_type').value = orderType;
+            document.getElementById('product_price').value = productPrice;
+            document.getElementById('shipping_price').value = shippingPrice;
+        } else {
+            document.getElementById('order_type').value = '';
+            document.getElementById('product_price').value = '';
+            document.getElementById('shipping_price').value = '';
+        }
+    }
+    
+    
+</script>
+
+<!-- End content -->
+{%  endblock %}

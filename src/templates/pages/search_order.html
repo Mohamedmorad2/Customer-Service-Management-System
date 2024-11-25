@@ -1,0 +1,81 @@
+{% extends 'base_tables.html' %}
+{% load static %}
+{% block title %}Search Order{% endblock %}
+{% block favicon %}{% static 'Images/Search.png' %}{% endblock %}
+{% block content %}
+
+<!-- Start content -->
+<div class="content" id="mainContent">
+    <!-- Start search-filter -->
+    <section class="search-filter">
+        <h1 style="color: #fff;">Search Filter</h1>
+        <div class="filter-actions">
+            <a href="{% url 'orders' %}">
+                <button class="btn add-unit-btn">Back Orders</button>
+            </a>
+        </div>
+    </section>
+    <!-- End search-filter -->
+
+    <!-- Start table -->
+    {% include 'parts/alerts.html' %}
+    <div class="table-container">
+        <section class="table">
+            <table id="example" class="cell-border" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Date</th>
+                        <th>Address</th>
+                        <th>Type Order</th>
+                        <th>Product Price</th>
+                        <th>Shipping Price</th>
+                        <th>Status</th>
+                        <th>Code</th>
+                        <th>Created by</th>
+                        <th>Created by ID</th>
+                        <th>Setting</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.name }}</td>
+                            <td>{{ order.phone_number }}</td>
+                            <td>{{ order.created_at|date:"d/m/Y -H:i:s A" }}</td>
+                            <td>{{ order.address }}</td>
+                            <td>{{ order.order_type }}</td>
+                            <td>${{ order.product_price }}</td>
+                            <td>${{ order.shipping_price }}</td>
+                            <td>{{ order.status }}</td>
+                            <td>{{ order.code }}</td>
+                            <td>{{ order.created_by.username }}</td>
+                            <td>{{ order.created_by.id }}</td>
+                            <td>
+                                <a href="{% url 'update_order' order.id %}">
+                                    <button><i class="fa-regular fa-pen-to-square"></i></button>
+                                </a>
+                                <a href="{% url 'order_detail' order.id %}">
+                                    <button><i class="fa-solid fa-print"></i></button>
+                                </a>
+                                <a href="{% url 'delete_orders' order.id %}" onclick="return confirm('Are you sure, you are about to delete the order?')">
+                                    <button><i class="fa-regular fa-trash-can" style="color: #ed0202;"></i></button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="13">No orders found.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <!-- End table -->
+</div>
+<!-- End content -->
+{% endblock %}

@@ -1,0 +1,86 @@
+{% load static %}
+<!-- Start header -->
+<header id="header">
+    <nav class="navbar">
+        <div class="logo-item">
+            <a href="{% url 'home' %}" class="logo">Customer Service System  (CSS)</a>
+            <!-- <a href="index.html" class="logo">Customer Service System Sprints (CSS)</a> -->
+            <div class="topbar">
+                <div class="toggle" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="link-item">
+            <ul class="navbar-nav">
+                <li class="header-item">
+                    <a href="{% url 'dashboard' %}" class="header-link">
+                        <img src="{% static 'Images/Dashboard.png' %}" class="icon" alt="Dashboard">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="{% url 'customers' %}" class="header-link">
+                        <img src="{% static 'Images/social-network.png' %}" class="icon" alt="Customers">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="{% url 'orders'%}" class="header-link">
+                        <img src="{% static 'Images/checklist.png' %}" class="icon" alt="Orders">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="{% url 'expenses' %}" class="header-link">
+                        <img src="{% static 'Images/spending.png' %}" class="icon" alt="Expenses">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="{% url 'total_sales' %}" class="header-link">
+                        <img src="{% static 'Images/buy.png' %}" class="icon" alt="Sales">
+                    </a>
+                </li>
+                
+                <li class="header-item">
+                    <a href="#" class="header-link">
+                        <img src="{% static 'Images/report.png' %}" class="icon" alt="Reports">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="{%url 'reviews'%}" class="header-link">
+                        <img src="{% static 'Images/review.png' %}" class="icon" alt="Review">
+                    </a>
+                </li>
+                {% if request.user.is_staff or is_admin %}
+                <li class="header-item">
+                    <a href="#" class="header-link">
+                        <img src="{% static 'Images/managing.png' %}" class="icon" alt="Account Management">
+                    </a>
+                </li>
+                {% endif %}
+                <li class="header-item dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        {% if user.profile_picture %}
+                            <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-icon">
+                        {% else %}
+                            <img src="{% static 'Images/user.png' %}" alt="Default Profile Picture" class="profile-icon">
+                        {% endif %}
+                    
+                        {{ user.get_full_name|default:user.username }}
+
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'profile_view' %}">Profile</a></li>
+                        <li><a class="dropdown-item-Logout" href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- End header -->

@@ -1,0 +1,62 @@
+<div class="message-container text-center">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="container">
+                <div class="alert alert-{{ message.tags }} fade show custom-alert" role="alert">
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error: {% endif %}
+                    <strong>{{ message }}</strong>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            $('.alert').fadeOut('slow');
+        }, 3000); 
+    });
+</script>
+
+<style>
+    .message-container {
+        position: relative;
+        margin: auto;
+        width: 90%;
+        transition: opacity 0.5s ease;
+    }
+
+    .container {
+        margin-top: 10px;
+        margin-bottom: 30px; 
+    }
+
+    .custom-alert {
+        font-size: 1.1em;
+        padding: 15px;
+        border-radius: 5px;
+        transition: opacity 0.5s ease;
+        text-align: center;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    .alert-warning {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+
+    .alert-info {
+        background-color: #cce5ff;
+        color: #004085;
+    }
+</style>

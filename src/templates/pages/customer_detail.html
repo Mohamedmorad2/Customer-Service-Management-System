@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Customer Details{% endblock %}
+{% block favicon %}{% static 'Images/list.png' %}{% endblock %}
+{% block content %}
+    
+    <div class="content" id="mainContent">
+        <h1 style="text-align: center; margin-top:15px; color:#023047;">Customer Details</h1>
+        <div class="container">
+            <table class="customer-table">
+                <tr>
+                    <th>Name</th>
+                    <td>{{ customer.name }}</td>
+                </tr>
+                <tr>
+                    <th>Phone Number</th>
+                    <td>{{ customer.phone_number }}</td>
+                </tr>
+                <tr>
+                    <th>Age</th>
+                    <td>{{ customer.age }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{ customer.address }}</td>
+                </tr>
+                <tr>
+                    <th>Interest</th>
+                    <td>{{ customer.interest }}</td>
+                </tr>
+                <tr>
+                    <th>How Did We Know</th>
+                    <td>{{ customer.how_did_we_know }}</td>
+                </tr>
+                <tr>
+                    <th>Notes</th>
+                    <td>{{ customer.notes }}</td>
+                </tr>
+                <tr>
+                    <th>Created By</th>
+                    <td>{{ customer.created_by.username }}</td>
+                </tr>
+                <tr>
+                    <th>Data</th>
+                    <td>{{ customer.created_at|date:"d/m/Y - h:i:s A"}}</td>
+                </tr>
+                <tr>
+                    <th>Screenshot</th>
+                    <td>
+                        {% if customer.screenshot %}
+                            <img src="{{ customer.screenshot.url }}" alt="Screenshot" width="200">
+                        {% else %}
+                            No screenshot uploaded.
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+
+            <div class="button-container">
+                <a href="#" onclick="printCustomerDetails()">
+                    <button><i class="fa-solid fa-print"></i> Print</button>
+                </a>
+                <a href="{% url 'customers' %}">
+                    <button><i class="fa-solid fa-arrow-left"></i> Back To Customers</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        h2{
+            text-align: center;
+            color:#fff;
+            margin-top: 0px;
+        }
+        
+        .customer-table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 5px;
+            margin:auto;
+        }
+        .customer-table td {
+            color:#fff;
+            background: #023047;
+        }
+        .customer-table th, .customer-table td {
+            border: 4px solid #ddd;
+            padding: 8px;
+
+        }
+        
+        .customer-table th {
+            background-color: #BC6C25;
+            text-align: left;
+            width: 20% ;
+        }
+
+        button{
+            width:20%;
+            margin-top:5px ;
+        }
+        @media print {
+            /* إخفاء الأزرار أثناء الطباعة */
+            .button-container {
+                display: none;
+            }
+            /* إضافة أي تنسيقات أخرى تريدها للطباعة */
+            .customer-table {
+                border: 1px solid #000;
+            }
+        }
+    </style>
+    <script>
+        function printCustomerDetails() {
+            window.print(); // هذا يقوم بفتح مربع الحوار للطباعة
+        }
+    </script>
+    
+
+{% endblock %}

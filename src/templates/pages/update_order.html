@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Update Order{% endblock %}
+{% block favicon %}{% static 'Images/order.png' %}{% endblock %}
+{% block content %}
+    
+    <!-- Start content -->
+    <div class="content" id="mainContent">
+        <h1 style="text-align: center; margin-top:15px; color:#023047;">Update Order</h1>
+        {%include 'parts/alerts.html'%}
+        <div class="container">
+            <form id="order_form" method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <div class="box" style="margin-left: 40px;">
+                    <label for="name">Enter Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter Name" value="{{ order.name }}" required>
+                </div>
+
+                <div class="box" style="margin-left: 40px;">
+                    <label for="phone_number">Phone Number</label>
+                    <input type="text" id="phone_number" name="phone_number" placeholder="Enter Phone Number" value="{{ order.phone_number }}" required>    
+                </div>
+            
+                <div class="box" style="margin-left: 40px;">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" placeholder="Enter Address" value="{{ order.address }}" required>
+                </div>
+
+                <div class="box" style="margin-left: 80px;">
+                    <label for="status" style="margin-left: 0px;">Status</label>
+                    <select id="status" name="status" required>
+                        <option value="">Select Status</option>
+                        <option value="Request" {% if order.status == 'Request' %}selected{% endif %}>Request</option>
+                        <option value="Pending" {% if order.status == 'Pending' %}selected{% endif %}>Pending</option>
+                        <option value="Approve" {% if order.status == 'Approve' %}selected{% endif %}>Approve</option>
+                        <option value="Cancel" {% if order.status == 'Cancel' %}selected{% endif %}>Cancel</option>
+                    </select>
+                    
+                </div>
+
+                <div class="box" style="margin-left: 40px;">
+                    <label for="order_type">Order Type</label>
+                    <input type="text" id="order_type" name="order_type" placeholder="Enter Order Type" value="{{ order.order_type }}" required>
+                </div>
+
+                <div class="box" style="margin-left: 40px;">
+                    <label for="product_price">Product Price</label>
+                    <input type="number" id="product_price" name="product_price" placeholder="Enter Product Price" value="{{ order.product_price }}" required>
+                </div>
+
+                <div class="box" style="margin-left: 40px;">
+                    <label for="shipping_price">Shipping Price</label>
+                    <input type="number" id="shipping_price" name="shipping_price" placeholder="Enter Shipping Price" value="{{ order.shipping_price }}" required>
+                </div>
+
+                <div class="box" style="margin-left: 40px;">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" name="notes" rows="4" cols="50" placeholder="Notes">{{ order.notes }}</textarea><br><br>
+                </div>
+
+                <div class="box" style="margin-left: 40px;">
+                    <label for="imageUpload">Upload Screenshot</label>
+                    {% if order.screenshot %}  
+                        <img src="{{ order.screenshot.url }}" alt="Current Image" style="max-width: 100px; max-height: 100px;"><br> 
+                    {% endif %}
+                    <input type="file" id="imageUpload" name="image" accept="image/*"><br><br>
+                </div>
+
+                <button type="submit" id="submit">Update</button>
+            </form>
+        </div>
+    </div>
+    <!-- End content -->
+
+{% endblock %}

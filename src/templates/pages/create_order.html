@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Create Order{% endblock %}
+{% block favicon %}{% static 'Images/add-to-cart.png' %}{% endblock %}
+{% block content %}
+
+<!-- Start content -->
+<div class="content" id="mainContent">
+    <h1 style="text-align: center; margin-top:15px; color:#023047;">Create Order</h1>
+    {%include 'parts/alerts.html'%}
+    <div class="container">
+        <form method='POST' enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% comment %} <div class="box" style="margin-left: 40px;" style="margin-left: 40px;" style="margin-left: 40px;">
+                <label for="customer">Select Customer:</label>
+                <select id="customer" name="customer" required onchange="updateCustomerInfo()">
+                    <option value="">Select Customer</option>
+                    {% for customer in customers %}
+                        <option value="{{ customer.id }}" data-phone="{{ customer.phone_number }}" data-address="{{ customer.address }}">
+                            {{ customer.name }} - {{ customer.phone_number }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div> {% endcomment %}
+
+            <div class="box" style="width: 300px; margin-left: 80px;">
+                <label for="customer" style="margin-left: 0px;">Select Customer</label>
+                <select id="customer" style="width: 380px;" name="customer"  onchange="updateCustomerInfo()" required>
+                    <option value="">Select Customer</option>
+                    {% for customer in customers %}
+                        <option value="{{ customer.id }}" data-phone="{{ customer.phone_number }}" data-address="{{ customer.address }}">
+                            {{ customer.name }} - {{ customer.phone_number }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="box" style="margin-left: 40px;" style="margin-left: 40px;">
+                <label for="phone_number">Phone Number</label>
+                <input type="text" id="phone_number" name="phone_number" placeholder="Enter Phone Number" required>    
+            </div>
+
+            <div class="box" style="margin-left: 40px;" style="margin-left: 40px;">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="Enter Address" required>
+            </div>
+
+            <div class="box" style=" margin-left: 80px;">
+                <label for="status" style="margin-left: 0px;">Status</label>
+                <select id="status" name="status" required>
+                    <option value="">Select Status</option>
+                    <option value="Request">Request</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Approve">Approve</option>
+                    <option value="Cancel">Cancel</option>
+                </select>
+            </div>
+
+            <div class="box" style="margin-left: 80px;">
+                <label for="order_type" style="margin-left: 0px;">Type Order</label>
+                <select id="order_type" name="order_type" required>
+                    <option value="">Select Order</option>
+                    <option value="Mug">Mug</option>
+                    <option value="Magic Mug">Magic Mug</option>
+                    <option value="T-shirt printing">T-shirt printing</option>
+                    <option value="Tableau">Tableau</option>
+                    <option value="Sticker">Sticker</option>
+                </select>
+            </div>
+
+            <div class="box" style="margin-left: 40px;" style="margin-left: 40px;">
+                <label for="product_price">Product Price</label>
+                <input type="number" id="product_price" name="product_price" placeholder="Enter Product Price" required>
+            </div>
+
+            <div class="box" style="height:80px; margin-left: 40px;" style="margin-left: 40px;">
+                <label for="shipping_price">Shipping Price</label>
+                <input type="number" id="shipping_price" name="shipping_price" placeholder="Enter Shipping Price" required>
+            </div>
+
+            <div class="box" style="margin-left: 40px;" style="margin-left: 40px;">
+                <label for="imageUpload">Screenshot</label>
+                <input type="file" id="imageUpload" name="image" accept="image/*" required>
+            </div>
+
+            <div class="box" style="margin-left: 40px;" style="margin-left: 40px;">
+                <label for="notes">Notes</label>
+                <textarea id="notes" name="notes" rows="4" cols="50" placeholder="Notes"></textarea>
+            </div>
+
+            <button type="submit" id="submit">Save</button>
+        </form>
+    </div>
+
+    {% if customer_info %}
+        <h2>customer_info</h2>
+        <p>name {{ customer_info.name }}</p>
+        <p>phone_number {{ customer_info.phone_number }}</p>
+        <p>address {{ customer_info.address }}</p>
+    {% elif customer_info is None %}
+
+    {% endif %}
+</div>
+<!-- End content -->
+
+<script>
+
+    function filterCustomers() {
+        var input = document.getElementById('customer_search');
+        var filter = input.value.toLowerCase();
+        var select = document.getElementById('customer');
+        var options = select.options;
+
+        for (var i = 1; i < options.length; i++) { 
+            var option = options[i];
+            var name = option.text.toLowerCase();
+
+
+            if (name.indexOf(filter) > -1) {
+                option.style.display = ''; 
+            } else {
+                option.style.display = 'none';
+            }
+        }
+    }
+
+    function updateCustomerInfo() {
+        var select = document.getElementById('customer');
+        var selectedOption = select.options[select.selectedIndex];
+
+
+        if (selectedOption.value) {
+            var phoneNumber = selectedOption.getAttribute('data-phone');
+            var address = selectedOption.getAttribute('data-address');
+
+            document.getElementById('phone_number').value = phoneNumber;
+            document.getElementById('address').value = address;
+        } else {
+            document.getElementById('phone_number').value = '';
+            document.getElementById('address').value = '';
+        }
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base_info.html' %}
+{% load static %}
+{% block title %}Email Sender{% endblock %}
+{% block favicon %}{% static 'Images/delivery.png' %}{% endblock %}
+{% block content %}
+
+<h1>
+    "Thank you for contacting us! We'll get back to you soon."
+</h1>
+<a href="{% url 'system_info' %}" class="btn">Back To System Info</a>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 All rights reserved. Mohamed Mustafa Morad</p>
+    </div>
+</footer>
+<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7f6;
+        margin: 0;
+        padding: 0;
+    }
+    
+    h1 {
+        text-align: center;
+        font-size: 28px;
+        color: #023047;
+        margin-top: 50px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    
+    a.btn {
+        display: block;
+        width: 200px;
+        height: 45px;
+        margin: 0 auto;
+        background-color: #023047;
+        color: white;
+        text-align: center;
+        line-height: 45px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+    
+    {% comment %} a.btn:hover {
+        background-color: #f4a300;
+    } {% endcomment %}
+    
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #023047;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    footer p {
+        margin: 0;
+    }
+    
+    .container {
+        width: 80%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+</style>
+{% endblock %}

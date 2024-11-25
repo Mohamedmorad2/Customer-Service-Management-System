@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Order Details{% endblock %}
+{% block favicon %}{% static 'Images/list.png' %}{% endblock %}
+{% block content %}
+    
+    <div class="content" id="mainContent">
+        <div class="container">
+            <h1 style="text-align: center; margin-top:15px; color:#023047;">Order Details</h1>
+            <table class="order-table">
+                <tr>
+                    <th>Name</th>
+                    <td>{{ order.name }}</td>
+                </tr>
+                <tr>
+                    <th>Phone Number</th>
+                    <td>{{ order.phone_number }}</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>{{ order.created_at|date:"d/m/Y - h:i:s A" }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{ order.address }}</td>
+                </tr>
+                <tr>
+                    <th>Type Order</th>
+                    <td>{{ order.order_type }}</td>
+                </tr>
+                <tr>
+                    <th>Product Price</th>
+                    <td>${{ order.product_price }}</td>
+                </tr>
+                <tr>
+                    <th>Shipping Price</th>
+                    <td>${{ order.shipping_price }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ order.status }}</td>
+                </tr>
+                <tr>
+                    <th>Code</th>
+                    <td>{{ order.code }}</td>
+                </tr>
+                <tr>
+                    <th>Created By</th>
+                    <td>{{ order.created_by.username }}</td>
+                </tr>
+                <tr>
+                    <th>Created By ID</th>
+                    <td>{{ order.created_by.id }}</td>
+                </tr>
+                <tr>
+                    <th>Screenshot</th>
+                    <td>
+                        {% if order.screenshot %}
+                            <img src="{{ order.screenshot.url }}" alt="Screenshot" width="200">
+                        {% else %}
+                            No screenshot uploaded.
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+            
+
+            <div class="button-container">
+                <a href="#" onclick="printCustomerDetails()">
+                    <button><i class="fa-solid fa-print"></i> Print</button>
+                </a>
+                <a href="{% url 'orders' %}">
+                    <button><i class="fa-solid fa-arrow-left"></i> Back To Orders</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        h2{
+            text-align: center;
+            color:#fff;
+            margin-top: 0px;
+        }
+        
+        .order-table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 5px;
+            margin:auto;
+        }
+        .order-table td {
+            color:#fff;
+            background: #023047;
+        }
+        .order-table th, .order-table td {
+            border: 4px solid #ddd;
+            padding: 8px;
+
+        }
+        
+        .order-table th {
+            background-color: #BC6C25;
+            text-align: left;
+            width: 20% ;
+        }
+
+        button{
+            width:20%;
+            margin-top:5px ;
+        }
+        @media print {
+            .button-container {
+                display: none;
+            }
+            .order-table {
+                border: 1px solid #000;
+            }
+        }
+    </style>
+    <script>
+        function printCustomerDetails() {
+            window.print();
+        }
+    </script>
+    
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base_login.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+{% block favicon %}{% static 'Images/login.ico' %}{% endblock %}
+{% block content %}
+
+<h1>Customer Service System (CSS) </h1>
+{%include 'parts/alerts.html'%}
+<div class="login">
+    <div class="img">
+        <img src="{% static 'Images/Secure-login.png' %}" alt="Secure Login Image">
+    </div>
+    <div class="content">
+        <h1>Welcome Back!</h1>
+        <div class="container">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit">Login</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

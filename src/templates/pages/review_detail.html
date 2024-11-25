@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Review Details{% endblock %}
+{% block favicon %}{% static 'Images/list.png' %}{% endblock %}
+{% block content %}
+    
+<div class="content" id="mainContent">
+    <div class="container">
+        <h1 style="text-align: center; margin-top:15px; color:#023047;">Review Details For {{ review.name_customer }}</h1>
+        <table class="review-table">
+            <tr>
+                <th>ID</th>
+                <td>{{ review.id }}</td>
+            </tr>
+            <tr>
+                <th>Customer Name</th>
+                <td>{{ review.name_customer }}</td>
+            </tr>
+            <tr>
+                <th>Order ID</th>
+                <td>{{ review.order_id }}</td>
+            </tr>
+            <tr>
+                <th>Order Type</th>
+                <td>{{ review.order_type }}</td>
+            </tr>
+            <tr>
+                <th>Product Price</th>
+                <td>{{ review.product_price }}</td>
+            </tr>
+            <tr>
+                <th>Shipping Price</th>
+                <td>{{ review.shipping_price }}</td>
+            </tr>
+            <tr>
+                <th>Created At</th>
+                <td>{{ review.created_at|date:"d/m/Y - h:i:s A" }}</td>
+            </tr>
+            <tr>
+                <th>Evaluation Authority</th>
+                <td>{{ review.evaluation_authority }}</td>
+            </tr>
+            <tr>
+                <th>Review Text</th>
+                <td>{{ review.review_text }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ review.code }}</td>
+            </tr>
+            <tr>
+                <th>Created By (Username)</th>
+                <td>{{ review.created_by.username }}</td>
+            </tr>
+            <tr>
+                <th>Created By (User ID)</th>
+                <td>{{ review.created_by.id }}</td>
+            </tr>
+            <tr>
+                <th>Screenshot</th>
+                <td>
+                    {% if review.screenshot %}
+                        <img src="{{ review.screenshot.url }}" alt="Screenshot" width="200">
+                    {% else %}
+                        No screenshot uploaded.
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+
+        <div class="button-container">
+            <a href="#" onclick="printExpenseDetails()">
+                <button><i class="fa-solid fa-print"></i> Print</button>
+            </a>
+            <a href="{% url 'reviews' %}">
+                <button><i class="fa-solid fa-arrow-left"></i> Back To Reviews</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    h2 {
+        text-align: center;
+        color: #fff;
+        margin-top: 0px;
+    }
+    
+    .review-table {
+        width: 80%;
+        border-collapse: collapse;
+        margin-top: 5px;
+        margin: auto;
+    }
+    
+    .review-table td {
+        color: #fff;
+        background: #023047;
+    }
+    
+    .review-table th, .review-table td {
+        border: 4px solid #ddd;
+        padding: 8px;
+    }
+    
+    .review-table th {
+        background-color: #BC6C25;
+        text-align: left;
+        width: 20%;
+    }
+
+    button {
+        width: 20%;
+        margin-top: 5px;
+    }
+    
+    @media print {
+        .button-container {
+            display: none;
+        }
+        .expense-table {
+            border: 1px solid #000;
+        }
+    }
+</style>
+<script>
+    function printExpenseDetails() {
+        window.print();
+    }
+</script>
+
+{% endblock %}

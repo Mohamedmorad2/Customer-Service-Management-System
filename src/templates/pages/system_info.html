@@ -1,0 +1,511 @@
+{% extends 'base_info.html' %}
+{% load static %}
+{% block title %}System Info{% endblock %}
+{% block favicon %}{% static 'Images/information-system.png' %}{% endblock %}
+{% block content %}
+
+    <header class="hero">
+        <div class="container">
+            <h1>Customer Service System (CSS)</h1>
+            <p>The comprehensive solution for businesses managing products and orders</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About the System</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#developer">About the Developer</a></li>
+            </ul>
+        </nav>
+        <button class="btn"> 
+            <a href="{% url 'login' %}" target="_blank">Go To The System Login Page</a>
+        </button>        
+    </header>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About the System</h2>
+            <p class="about-text">
+                The Customer Service Management System (CSS) is a comprehensive solution designed to streamline customer interactions and enhance operational efficiency. 
+                It enables businesses to manage orders, 
+                track expenses, handle customer reviews, and monitor sales seamlessly. 
+                With a user-friendly interface and robust features, the system ensures data accuracy, 
+                real-time updates, and better decision-making. Whether you're managing customers or analyzing financial performance,
+                CSS provides the tools needed to deliver exceptional service and achieve business goals effectively.
+            </p>
+
+            
+        </div>
+    </section>
+    
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>Order Management</h3>
+                    <img src="{% static 'Images/system_img/procurement.png' %}" alt="Order Management">
+                    <p><p>A comprehensive system for organizing and tracking orders with ease.</p></p>
+                </div>
+                <div class="feature-item">
+                    <h3>Customer Management</h3>
+                    <img src="{% static 'Images/system_img/management.png' %}" alt="Customer Management">
+                    <p>A customer database with advanced filtering and search options.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Expense Management</h3>
+                    <img src="{% static 'Images/system_img/control.png' %}" alt="Expense Management">
+                    <p>Track and manage expenses with up-to-date reports.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Review Management</h3>
+                    <img src="{% static 'Images/system_img/appraisal.png' %}" alt="Review Management">
+                    <p>Receive customer feedback to improve your services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <h3>Login Page</h3>
+                    <img src="{% static 'Images/system_img/login.png' %}" alt="login">
+                    <p>A comprehensive system for managing and securing user logins, including registration and authentication.</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <h3>Dashboard Page</h3>
+                    <img src="{% static 'Images/system_img/dashbord.png' %}" alt="dashboard">
+                    <p>The main interface for overseeing system operations, with real-time data and insights.</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <h3>Create Customer Page</h3>
+                    <img src="{% static 'Images/system_img/Create Customer.png' %}" alt="Create Customer">
+                    <p>A page for adding and managing customer information easily.</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <h3>Customers Page</h3>
+                    <img src="{% static 'Images/system_img/Customer.png' %}" alt="Customer">
+                    <p>A page for viewing and managing all customer details in one place.</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <h3>Create Order Page</h3>
+                    <img src="{% static 'Images/system_img/Create order.png' %}" alt="Create order">
+                    <p>A page for creating new orders, linking products, and customers to orders.</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <h3>Orders Page</h3>
+                    <img src="{% static 'Images/system_img/orders.png' %}" alt="orders">
+                    <p>This page allows you to view and manage all existing orders within the system.</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <h3>Create Expense Page</h3>
+                    <img src="{% static 'Images/system_img/Create Expense.png' %}" alt="Create Expense">
+                    <p>Page for recording and managing business expenses efficiently.</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <h3>Expense Page</h3>
+                    <img src="{% static 'Images/system_img/Expense.png' %}" alt="Expense">
+                    <p>View and track all expenses recorded within the system.</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <h3>Sales Page</h3>
+                    <img src="{% static 'Images/system_img/Sales.png' %}" alt="Sales">
+                    <p>Overview of sales data and insights to track revenue generation.</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <h3>Create Review Page</h3>
+                    <img src="{% static 'Images/system_img/Create Review.png' %}" alt="Create Review">
+                    <p>A page where customers can leave feedback and reviews on products and services.</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <h3>Review Page</h3>
+                    <img src="{% static 'Images/system_img/Review.png' %}" alt="Review">
+                    <p>View all the customer reviews and manage them from one place.</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <h3>Create User Page</h3>
+                    <img src="{% static 'Images/system_img/Create User.png' %}" alt="Create User">
+                    <p>Page for creating new users and assigning them roles within the system.</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <h3>Users Page</h3>
+                    <img src="{% static 'Images/system_img/Users.png' %}" alt="Users">
+                    <p>Manage user information, roles, and permissions on this page.</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <h3>Logs Page</h3>
+                    <img src="{% static 'Images/system_img/Logs.png' %}" alt="Logs">
+                    <p>View and track system logs, including user activities and errors.</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <h3>Admin Log Page</h3>
+                    <img src="{% static 'Images/system_img/Admin log.png' %}" alt="Admin log">
+                    <p>Manage administrative activities and track logins and system settings.</p>
+                </div>
+                
+                {% comment %} <div class="gallery-item">
+                        <h3>Profile Information Page</h3>
+                        <img src="{% static 'Images/system_img/Profile Information.png' %}" alt="Profile Information">
+                        <p>A comprehensive system for organizing and tracking orders with ease.</p>
+                </div> {% endcomment %}
+
+
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="developer" class="developer">
+        <div class="container">
+            <h2>About the Developer</h2>
+            <p class="about-text">
+                I am Mohamed Mustafa Morad, a student at the Faculty of Arts,<br>
+                English Department. 
+                I have a passion for Technological advancements and a Deep interest in Artificial Intelligence,
+                Machine Learning,<br> Data Analysis, and Programming.
+            </p>
+            
+
+            <div class="contact-info">
+                <h1>Social Media </h1>
+                <ul>
+                    <li>Email <i class="fa-regular fa-envelope"></i> : <a href="mailto:m7medmorad12@gmail.com" target="_blank">   Visit my Email <i class="fa-solid fa-arrow-up-right-from-square"></i> </a></li>
+                    <li>Whatsapp  <i class="fa-brands fa-whatsapp"></i>  : <a href="https://api.whatsapp.com/send/?phone=201276717527&text&type=phone_number&app_absent=0" target="_blank">Visit my Whatsapp <i class="fa-solid fa-arrow-up-right-from-square"></i> </a></li>
+                    <li>LinkedIn  <i class="fa-brands fa-linkedin"></i>  : <a href="https://www.linkedin.com/in/mohamed-mustafa-morad-35abb8252/" target="_blank">Visit my LinkedIn <i class="fa-solid fa-arrow-up-right-from-square"></i> </a></li>
+                </ul>
+            </div>
+    
+            <div class="contact-form-container">
+                <form action="{% url 'contact_submit' %}" method="post" class="contact-form">
+                    {% csrf_token %}
+                    <h1>Contact Me</h1>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name"  placeholder="Enter Your Name" required><br>
+                
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email"  placeholder="Enter Your Email" required><br>
+
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone"  placeholder="Enter Your Phone Number" maxlength="12" required><br>
+                
+                    <label for="category">Category:</label>
+                    <select id="category" name="category" required onchange="toggleCompanyBrandInput()">
+                        <option value="">Select</option>
+                        <option value="company">Company || Brand</option>
+                        <option value="personal">Personal</option>
+                    </select><br>
+    
+                    <div id="company-input" style="display: none;">
+                        <label for="company_name">Company/Brand Name:</label>
+                        <input type="text" id="company_name" name="company_name"  placeholder="Enter Your Brand Name"><br>
+                    </div>
+                    
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required  placeholder="Enter Your Message"></textarea><br>
+                
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 All rights reserved.  Mohamed Mustafa Morad.</p>
+        </div>
+    </footer> 
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #fafafa;
+            color: #333;
+        }
+        header{
+            background: #023047;
+        }
+        .hero {
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .container{
+            color:#fff;
+        }
+
+        .about-text {
+            text-align: center;
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            font-size: 25px; 
+            line-height: 1.6; 
+            color: #fff;
+            background-color: #023047;
+            border-radius: 8px;
+        }
+        
+
+        @media (max-width: 768px) {
+            .about-text {
+                font-size: 16px;
+                padding: 15px; 
+            }
+        }
+        
+        .developer ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .btn a{
+            text-decoration: none;
+            color: #024567;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #fff;
+            border-radius: 5px;
+            border: 2px solid #023047; 
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        
+        .btn a:hover {
+            color: #fff;
+        }
+        .btn:hover {
+            background: #024567;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px 0;
+            margin: 0;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #024567;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            text-align: center;
+            color:#fff;
+        }
+        
+        .feature-list, .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-item, .gallery-item {
+            text-align: center;
+            padding: 15px;
+            background: #023047;
+            border-radius: 5px;
+            color: #fff;
+        }
+        
+        .gallery-item img {
+            width: 80%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        img{
+            width:100px;
+            height:100px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #023047;
+            color: #fff;
+        }
+
+        .contact-info {
+            margin-top:50px;
+            flex: 1;
+            background-color: #023047;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .contact-info ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .contact-info ul li {
+            margin-bottom: 10px;
+        }
+        .contact-info h1{
+            font-size: 30px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            text-align:center;
+        }
+
+        .contact-info a {
+            text-decoration: none;
+            color: #023047;
+            font-weight: bold;
+        }
+        .contact-form-container {
+            margin-top:50px;
+            flex: 1;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #023047;
+            text-align:center;
+        }
+
+        .contact-form label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .contact-form textarea{
+            border-radius: 4px;
+            box-sizing: border-box;
+            resize: none; 
+            font-family: Arial, sans-serif;
+            font-size: 20px; 
+            line-height: 1; 
+        }
+        .contact-form input{
+            width:95.0%;
+        }
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #007bff; 
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+        }
+
+        .contact-form button {
+            background-color: #023047;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #021f34;
+        }
+
+
+        #company-input {
+            display: none;
+        }
+
+        .contact-form select:focus + #company-input input {
+            border-color: #023047;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+                
+        
+    </style>
+
+    <script>
+        function toggleCompanyBrandInput() {
+            var category = document.getElementById('category').value;
+            var companyInput = document.getElementById('company-input');
+            
+            if (category === 'company') {
+                companyInput.style.display = 'block';
+            } else {
+                companyInput.style.display = 'none';
+            }
+        }
+    
+    
+        toggleCompanyBrandInput();
+        // Example JS for smooth scroll on navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+
+    </script>
+
+{%  endblock %}

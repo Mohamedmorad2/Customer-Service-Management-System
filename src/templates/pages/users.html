@@ -1,0 +1,59 @@
+{% extends 'base_tables.html' %}
+{% load static %}
+{% block title %}Users{% endblock %}
+{% block favicon %}{% static 'Images/Users.png' %}{% endblock %}
+{% block content %}
+
+<!-- Start content -->
+<div class="content" id="mainContent">
+    <!-- Start search-filter -->
+    {% comment %} <section class="search-filter">
+        <form method="GET" action="{% url 'search_users' %}">
+            <div class="filter-item">
+                <label for="Name">Name</label>
+                <input type="text" id="Name" name="name" placeholder="Enter Name">
+            </div>
+
+            <div class="filter-item">
+                <label for="user_name">User Name</label>
+                <input type="text" id="user_name" name="username" placeholder="Enter User Name">
+            </div>
+
+            <div class="filter-item">
+                <button type="submit" class="btn search-btn">Search</button>
+                <a href="{% url 'create_user' %}"><button class="btn add-unit-btn" type="button">Create User</button></a>
+            </div>
+        </form>
+    </section> {% endcomment %}
+    <!-- End search-filter -->
+    {%include 'parts/alerts.html'%}
+    <!-- Start table -->
+    <div class="table-container">
+        <h1 style="text-align: center; margin-top:15px; color:#023047;">Users</h1>
+        <section class="table">
+            <table id="example" class="cell-border" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>User Name</th>
+                        <th>Date Joined</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.date_joined|date:"d/m/Y - h:i:s A" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section> 
+    </div>
+    <!-- End table -->
+</div>
+<!-- End content -->
+{% endblock %}

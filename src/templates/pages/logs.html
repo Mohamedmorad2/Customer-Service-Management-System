@@ -1,0 +1,45 @@
+{% extends 'base_tables.html' %}
+{% load static %}
+{% block title %}Logs{% endblock %}
+{% block favicon %}{% static 'Images/log-file.png' %}{% endblock %}
+{% block content %}
+
+<!-- Start content -->
+<div class="content" id="mainContent">
+    
+    <!-- Start table -->
+    <div class="table-container">
+        <section class="table">
+            <table id="example" class="cell-border" style="width:100%">
+                <h1 style="text-align: center; margin-top:15px; color:#023047; font-size:40px;">Logs</h1>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User ID</th>
+                        <th>Username</th>
+                        <th>First Name</th>
+                        <th>Action</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                        <tr>
+                            <td>{{ log.id }}</td>
+                            <td>{{ log.user_id }}</td>
+                            <td>{{ log.user}}</td>
+                            <td>{{ log.first_name }}</td>
+                            <td>{{ log.action }}</td>
+                            <td>{{ log.timestamp|date:"d/m/Y - h:i:s A" }} </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section> 
+    </div>
+    <!-- End table -->
+
+</div>
+<!-- End content -->
+
+{% endblock %}

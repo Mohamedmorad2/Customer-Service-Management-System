@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Update Review{% endblock %}
+{% block favicon %}{% static 'Images/satisfaction.png' %}{% endblock %}
+
+{% block content %}
+<!-- Start content -->
+<div class="content" id="mainContent">
+    <h1 style="text-align: center; margin-top:15px; color:#023047;">Update Review For {{ review.name_customer }}</h1>
+    {% include 'parts/alerts.html' %}
+
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+                <p style="margin-left: 40px;"><strong>Customer Name:</strong> {{ review.name_customer }}</p>
+                <p style="margin-left: 40px;"><strong>Order ID:</strong> {{ review.order_id }}</p>
+                <p style="margin-left: 40px;"><strong>Order Type:</strong> {{ review.order_type }}</p>
+                <p style="margin-left: 40px;"><strong>Product Price:</strong> {{ review.product_price }}</p>
+                <p style="margin-left: 40px;"><strong>Shipping Price:</strong> {{ review.shipping_price }}</p>
+                <p style="margin-left: 40px;"><strong>Created At:</strong> {{ review.created_at|date:"d/m/Y - h:i:s A" }}</p>
+
+            <div class="box" style="margin-left: 40px;">
+                <label for="evaluation_authority" style="margin-left: 0px;">Evaluation Authority</label>
+                <select id="evaluation_authority" name="evaluation_authority" required>
+                    <option value="">Select</option>
+                    <option value="Phone" {% if review.evaluation_authority == "Phone" %}selected{% endif %}>Phone</option>
+                    <option value="WhatsApp" {% if review.evaluation_authority == "WhatsApp" %}selected{% endif %}>WhatsApp</option>
+                    <option value="Facebook" {% if review.evaluation_authority == "Facebook" %}selected{% endif %}>Facebook</option>
+                    <option value="Instagram" {% if review.evaluation_authority == "Instagram" %}selected{% endif %}>Instagram</option>
+                    <option value="Other" {% if review.evaluation_authority == "Other" %}selected{% endif %}>Other</option>
+                </select>
+            </div>
+
+            <div class="box">
+                <label for="screenshot">Screenshot</label>
+                <input type="file" id="screenshot" name="screenshot">
+                {% if review.screenshot %}
+                    <p><strong>Current Screenshot:</strong> <img src="{{ review.screenshot.url }}" alt="Screenshot" width="200"></p>
+                {% endif %}
+            </div>
+
+            <div class="box">
+                <label for="review_text">Review Text</label>
+                <textarea id="review_text" name="review_text" rows="4" cols="50">{{ review.review_text }}</textarea>
+            </div>
+
+            <button type="submit">Save Changes</button>
+        </form>
+
+    </div>
+</div>
+<!-- End content -->
+
+{% endblock %}

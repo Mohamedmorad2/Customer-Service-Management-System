@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Expense Details{% endblock %}
+{% block favicon %}{% static 'Images/list.png' %}{% endblock %}
+{% block content %}
+    
+<div class="content" id="mainContent">
+    <div class="container">
+        <h1 style="text-align: center; margin-top:15px; color:#023047;">Expense Details</h1>
+        <table class="expense-table">
+            <tr>
+                <th>ID</th>
+                <td>{{ expense.id }}</td>
+            </tr>
+            <tr>
+                <th>Product</th>
+                <td>{{ expense.product }}</td>
+            </tr>
+            <tr>
+                <th>Quantity</th>
+                <td>{{ expense.quantity }}</td>
+            </tr>
+            <tr>
+                <th>Created At</th>
+                <td>{{ expense.created_at|date:"d/m/Y - h:i:s A" }}</td>
+            </tr>
+            <tr>
+                <th>Product Price</th>
+                <td>${{ expense.product_price }}</td>
+            </tr>
+            <tr>
+                <th>Purchase Date</th>
+                <td>{{ expense.purchase_date|date:"d/m/Y " }}</td>
+            </tr>
+            <tr>
+                <th>Total Price</th>
+                <td>${{ expense.total_price }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ expense.get_status_display }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ expense.code }}</td>
+            </tr>
+            <tr>
+                <th>Created By</th>
+                <td>{{ expense.created_by.username }}</td>
+            </tr>
+            <tr>
+                <th>Created By ID</th>
+                <td>{{ expense.created_by.id }}</td>
+            </tr>
+            <tr>
+                <th>Screenshot</th>
+                <td>
+                    {% if expense.screenshot %}
+                        <img src="{{ expense.screenshot.url }}" alt="Screenshot" width="200">
+                    {% else %}
+                        No screenshot uploaded.
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+
+        <div class="button-container">
+            <a href="#" onclick="printExpenseDetails()">
+                <button><i class="fa-solid fa-print"></i> Print</button>
+            </a>
+            <a href="{% url 'expenses' %}"> <!-- Adjust the URL name as necessary -->
+                <button><i class="fa-solid fa-arrow-left"></i> Back To Expenses</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    h2 {
+        text-align: center;
+        color: #fff;
+        margin-top: 0px;
+    }
+    
+    .expense-table {
+        width: 80%;
+        border-collapse: collapse;
+        margin-top: 5px;
+        margin: auto;
+    }
+    
+    .expense-table td {
+        color: #fff;
+        background: #023047;
+    }
+    
+    .expense-table th, .expense-table td {
+        border: 4px solid #ddd;
+        padding: 8px;
+    }
+    
+    .expense-table th {
+        background-color: #BC6C25;
+        text-align: left;
+        width: 20%;
+    }
+
+    button {
+        width: 20%;
+        margin-top: 5px;
+    }
+    
+    @media print {
+        /* إخفاء الأزرار أثناء الطباعة */
+        .button-container {
+            display: none;
+        }
+        /* إضافة أي تنسيقات أخرى تريدها للطباعة */
+        .expense-table {
+            border: 1px solid #000;
+        }
+    }
+</style>
+<script>
+    function printExpenseDetails() {
+        window.print(); // هذا يقوم بفتح مربع الحوار للطباعة
+    }
+</script>
+
+{% endblock %}

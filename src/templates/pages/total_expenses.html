@@ -1,0 +1,135 @@
+{% extends 'base_tables.html' %}
+{% load static %}
+{% block title %}Total Expenses{% endblock %}
+{% block favicon %}{% static 'Images/spending.png' %}{% endblock %}
+{% block content %}
+
+<!-- Start content -->
+<div class="content" id="mainContent">
+        <!-- Start search-filter -->
+    <form method="GET" action="{% url 'search_expenses' %}">
+        <section class="search-filter">
+            <!-- <h1>Search Filter</h1> -->
+            <div class="filter-item">
+                <label for="Product">Select Product</label>
+                <select id="Product" name="Product">
+                    <option value="">Select Product</option>
+                    <option value="Mug">Mug</option>
+                    <option value="Magic Mug">Magic Mug</option>
+                    <option value="T-shirt printing">T-shirt printing</option>
+                    <option value="Tableau">Tableau</option>
+                    <option value="Sticker">Sticker</option>
+                </select>
+            </div>
+
+            <div class="filter-item">
+                <label for="Quantity">Quantity</label>
+                <input type="text" id="quantity" name="quantity" placeholder="Enter Quantity" >    
+            </div>
+        
+
+            <div class="filter-item">
+                <label for="Product Price">Product Price</label>
+                <input type="text" id=" product_price" name="product_price"  placeholder="Enter Product Price " >
+            </div>
+
+            <div class="filter-item">
+                <label for=" Purchase Date">Purchase Date</label>
+                <input type="date" id="purchase_date" name="purchase_date">
+            </div>
+
+            <div class="filter-item">
+                <label for="Total Price">Total Price</label>
+                <input type="text" id="total_price" name="total_price"  placeholder="Enter Total Price " >
+            </div>
+
+            <div class="filter-item">
+                <label for="status">Status</label>
+                <select id="status" name="status">
+                    <option value="">Select Status</option>
+                    <option value="request">Request</option>
+                    <option value="pending">Pending</option>
+                    <option value="approve">Approve</option>
+                    <option value="cancel">Cancel</option>
+                </select>
+            </div>
+
+            <div class="filter-item">
+                <label for="Created by">Created by</label>
+                <input type="text" id="created_by" placeholder="Enter Created by">
+            </div>
+
+            <div class="filter-item">
+                <label for="code">Code</label>
+                <input type="text" id="code"name="code" placeholder="Enter Code">
+            </div>
+
+            <div class="filter-actions">
+                <button type="submit" class="btn search-btn">Search</button>
+                <a href="{% url 'create_expense' %}"><button type="button" class="btn add-unit-btn">Create Expenses</button></a>
+            </div>
+        </section>
+    </form>
+        <!-- End search-filter -->
+        <!-- Start table -->
+        {%include 'parts/alerts.html'%}
+        <div class="table-container">
+            <section class="table">
+            <table id="example" class="cell-border" style="width:100%">
+                <thead>
+                    <tr>
+                        <th> ID </th>
+                        <th> Product </th>
+                        <th> Quantity </th>
+                        <th> Date </th>
+                        <th> Product Price </th>
+                        <th> Purchase Date </th>
+                        <th> Total Price </th>
+                        <th> Status </th>
+                        <th> Code </th>
+                        <th> Created by </th>
+                        <th> Created by ID </th>
+                        <th> Setting </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for expenses in Expense %}
+                        <tr>
+                            <td>{{ expenses.id }}</td>
+                            <td>{{ expenses.product }}</td>
+                            <td>{{ expenses.quantity }}</td>
+                            <td>{{ expenses.created_at|date:"d/m/Y - h:i:s A" }}</td>
+                            <td>${{ expenses.product_price }}</td>
+                            <td>{{ expenses.purchase_date|date:"d/m/Y" }}</td>
+                            <td>${{ expenses.total_price }}</td>
+                            <td>{{ expenses.get_status_display }}</td>  
+                            <td>{{ expenses.code }}</td>
+                            <td>{{ expenses.created_by.username }}</td>
+                            <td>{{ expenses.created_by.id  }}</td>
+                            <td>
+                                <a href="{% url 'update_expense' expenses.id %}">
+                                    <button><i class="fa-regular fa-pen-to-square"></i></button>
+                                </a>
+                                <a href="{% url 'expense_detail' expenses.id %}">
+                                    <button><i class="fa-solid fa-print"></i></button>
+                                </a>
+                                <a href="{% url 'delete_expenses' expenses.id %}" onclick="return confirm('Are you sure, you are about to delete the Expenses?')">
+                                    <button><i class="fa-regular fa-trash-can" style="color: #ed0202;"></i></button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="10">No expenses available.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                
+                </table>
+            </section> 
+        </div> 
+        <!-- End table -->
+</div> 
+<!-- End content -->
+
+{%  endblock %}
