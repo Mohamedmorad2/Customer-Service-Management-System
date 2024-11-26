@@ -1,0 +1,144 @@
+/* Base Styles */
+form {
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(50px, auto);
+    grid-column-gap: 5px;
+    grid-row-gap: 10px; /* Increased gap for better spacing */
+    border-radius: 20px;
+    background-color: #ffffff;
+    margin: auto;
+}
+
+.subcontent {
+    margin: 50px auto; /* Center with auto left/right margins */
+    height: 80%;
+    width: 95%;
+    background: #2b343d;
+    border-radius: 10px;
+}
+
+.box {
+    margin: 30px 0; /* Vertical spacing */
+}
+
+label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #000000;
+    margin-left: 10px;
+    margin-left: 40px;
+}
+
+.box input[type="file"] {
+    background: transparent; /* Use transparent instead of #ffffff00 */
+    color: #000000;
+    border: none;
+    width: 100%; /* Make file input full width */
+    height: 35px;
+}
+
+input {
+    width: 80%; /* Consider using 100% if full-width is required */
+    height: 50%; /* This can be adjusted based on design */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background: #ffffff;
+    margin: 7px 0; /* Vertical margin */
+    border-radius: 4px;
+    padding: 7px;
+    color: #000000;
+    margin-left: 40px;
+}
+
+.box select {
+    width: 80%; /* Full width for dropdown */
+    height: 35px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background: #ffffff;
+    margin: 7px 0; /* Vertical margin */
+    border-radius: 4px;
+    padding: 7px;
+    color: #000000;
+    margin-left: 40px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+    outline: none;
+}
+
+button {
+    width: 75%;
+    height: 39px;
+    display: block;
+    border: none;
+    cursor: pointer;
+    background-color: #023047;
+    color: #fff;
+    border-radius: 10px;
+    transition: 0.5s;
+    margin: 40px auto 35px; /* Center button with auto margins */
+}
+
+button:hover {
+    background-color: #3498db;
+}
+
+textarea {
+    padding: 5px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: none;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-left: 40px;
+}
+
+/* Responsive Styles */
+@media (max-width: 915px) {
+    form {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+}
+
+@media (min-width: 916px) and (max-width: 1366px) {
+    form {
+        grid-template-columns: repeat(2, 1fr); /* Two columns */
+    }
+}
+
+@media (min-width: 1366px) {
+    form {
+        grid-template-columns: repeat(3, 1fr); /* Three columns */
+    }
+}
+
+/* Additional media queries for specific adjustments */
+@media (min-width: 2000px) {
+    form {
+        grid-template-columns: repeat(4, 1fr); /* Four columns */
+    }
+}
+
+@media (max-width: 600px) {
+    .logo-item,
+    .link-item {
+        width: 100%; /* Full width for logo and links */
+    }
+    .topbar {
+        margin-left: 10px;
+    }
+    .header-item {
+        display: none; /* Hide header item */
+    }
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../Images/Customers.png" rel="icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Customers</title>
+</head>
+<!-- Start header -->
+<header id="header">
+    <nav class="navbar">
+        <div class="logo-item">
+            <a href="../index.html" class="logo">Sprints (CSS)</a>
+            <!-- <a href="index.html" class="logo">Customer Service System Sprints (CSS)</a> -->
+            <div class="topbar">
+                <div class="toggle" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="link-item">
+            <ul class="navbar-nav">
+                <li class="header-item">
+                    <a href="./pages/dashboard.html" class="header-link">
+                        <img src="../Images/Dashboard.png" class="icon" alt="Dashboard">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="./pages/customers.html" class="header-link">
+                        <img src="../Images/social-network.png" class="icon" alt="Customers">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="./pages/order.html" class="header-link">
+                        <img src="../Images/checklist.png" class="icon" alt="Orders">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="./pages/total_expenses.html" class="header-link">
+                        <img src="../Images/spending.png" class="icon" alt="Expenses">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="./pages/total_sales.html" class="header-link">
+                        <img src="../Images/buy.png" class="icon" alt="Sales">
+                    </a>
+                </li>
+                
+                <li class="header-item">
+                    <a href="#" class="header-link">
+                        <img src="../Images/report.png" class="icon" alt="Reports">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="#" class="header-link">
+                        <img src="../Images/managing.png" class="icon" alt="Account Management">
+                    </a>
+                </li>
+
+                <li class="header-item dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        <img src="../Images/user.png" alt="Profile Icon" class="profile-icon"> Mohamed M. Morad
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="./pages/profile.html">Profile</a></li>
+                        <li><a class="dropdown-item-Logout" href="./pages/login.html">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- End header -->
+
+<body onload="toggleSidebar()">
+    <!-- Start sidebar -->
+    <div class="side_bar"> 
+        <aside id="sidebar" class="sidebar">
+            <ul class="sidebar-nav" id="sidebar-nav">
+                <!-- Start Dashboard -->
+                <li class="nav-item">
+                    <a class="nav-link" href="./pages/dashboard.html">
+                        <img src="../Images/Dashboard.png" alt="Dashboard">
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <!-- End Dashboard -->
+
+                <!-- Start Customers-->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="../Images/social-network.png" alt="Customers">
+                        <span>Customers</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#"><img src="../Images/add-Customer.png" alt="Add Customer">Add Customer</a></li>
+                        <li><a href="#"><img src="../Images/Customers.png" alt="Customers">Customers</a></li>
+                    </ul>
+                </li>
+                <!-- End Customers -->
+                
+                <!-- Start Orders -->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="../Images/checklist.png" alt="Orders">
+                        <span>Orders</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#"><img src="../Images/add-to-cart.png" alt="Add Order">Add Order</a></li>
+                        <li><a href="#"><img src="../Images/order.png" alt="Orders ">Orders</a></li>
+                    </ul>
+                </li>
+                <!-- End Orders  -->
+                
+                <!-- Start Finances -->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="../Images/hand.png" alt="Finances">
+                        <span>Finances</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#"><img src="../Images/wallet.png" alt="Add Expense">Add Expense</a></li>
+                        <li><a href="#"><img src="../Images/spending.png" alt="Total Expenses">Total Expenses</a></li>
+                        <li><a href="#"><img src="../Images/buy.png" alt="Total Sales">Total Sales</a></li>
+                    </ul>
+                </li>
+                <!-- End Finances -->
+
+                <!-- Start Reports -->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="../Images/report.png" alt="Reports">
+                        <span>Reports</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#"><img src="../Images/report.png" alt="Report Login">Report </a></li>
+                    </ul>
+                </li>
+                <!-- End Reports -->
+
+                <!-- Start Account Management -->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="../Images/managing.png" alt="Account Management">
+                        <span>Account Management</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#"><img src="../Images/add-user.png" alt="Add User">Add User</a></li>
+                        <li><a href="#"><img src="../Images/Users.png" alt="Users">Users</a></li>
+                        <li><a href="#"><img src="../Images/log-file.png" alt="Logs">Logs</a></li>
+                        <li><a href="#"><img src="../Images/permissions.png" alt="Permission">Permission</a></li>
+                    </ul>
+                </li>
+                <!-- End Account Management -->
+            </ul>
+        </aside>
+    </div>
+    <!-- End sidebar -->
+
+    <!-- Start content -->
+    <div class="content" id="mainContent">
+        <!-- Start search-filter -->
+        <section class="search-filter">
+            <!-- <h1>Search Filter</h1> -->
+            <div class="filter-item">
+                <label for="Name">Name </label>
+                    <input type="text" id="name"  placeholder="Enter Name" >
+            </div>
+
+            <div class="filter-item">
+                <label for="phone number">Phone number</label>
+                    <input type="text" id="phone_number"  placeholder="Enter phone number.." >
+            </div>
+
+            <div class="filter-item">
+                <label for="Age">Age</label>
+                <input type="text" id="Age"  placeholder="Enter Age" required>
+            </div>
+
+            <div class="filter-item">
+                <label for="date">Date</label>
+                <input type="date" id="date">
+            </div>
+
+            <div class="filter-item">
+                <label for="Address ">Address </label>
+                <input type="text" id="Address "  placeholder="Enter Address " required>
+            </div>
+
+            <div class="filter-item">
+                <label for="Interest">Interest</label>
+                <select id="Interest" name="Interest" required>
+                    <option value="">Select</option>
+                    <option value="Programming">Programming</option>
+                    <option value="Design">Design</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Business">Business</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            
+
+            <div class="filter-item ">
+                <label for="howDidWeKnow">How did we know</label>
+                <select id="howDidWeKnow" name="Project" required>
+                    <option value="">Select</option>
+                    <option value="Facebook"> Facebook </option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="TikTok">TikTok</option>
+                    <option value="Friend">Friend</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <label for="Created by">Created by</label>
+                <input type="text" id="Created_by" placeholder="Enter Created by">
+            </div>
+
+            <div class="filter-item">
+                <label for="code">Code</label>
+                <input type="text" id="phone" placeholder="Enter Code">
+            </div>
+            
+            <div class="filter-actions">
+                <button class="btn search-btn">Search</button>
+                <a href="./create_customer.html"><button class="btn add-unit-btn">Create Customer</button></a>
+            </div>
+        </section>
+        <!-- End search-filter -->
+        <!-- Start table -->
+        <div class="table-container">
+            <section class="table">
+            <table id="example" class="cell-border" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th> Name </th>
+                            <th> Phone Number </th>
+                            <th> Age </th>
+                            <th> Date </th>
+                            <th> Address </th>
+                            <th> Interest  </th>
+                            <th> How did we know </th>
+                            <th>Code</th>
+                            <th>Created by</th>
+                            <th>Setting</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>123-456-7890</td>
+                            <td>25</td>
+                            <td>2024-10-16</td>
+                            <td>123 Elm St</td>
+                            <td>Technology</td>
+                            <td>Advertisement</td>
+                            <td>456123</td>
+                            <td>
+                                <a href="#"><button><i class="fa-regular fa-pen-to-square"></i></button></a>
+                                <a href="#"><button><i class="fa-solid fa-print"></i></button></a>
+                                <a href="#"><button><i class="fa-regular fa-trash-can" style="color: #ed0202;"></i></button></a>
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>987-654-3210</td>
+                            <td>30</td>
+                            <td>2024-10-16</td>
+                            <td>456 Oak St</td>
+                            <td>Art</td>
+                            <td>Friend</td>
+                            <td>265456</td>
+                            <td>
+                                <a href="#"><button><i class="fa-regular fa-pen-to-square"></i></button></a>
+                                <a href="#"><button><i class="fa-solid fa-print"></i></button></a>
+                                <a href="#"><button><i class="fa-regular fa-trash-can" style="color: #ed0202;"></i></button></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section> 
+        </div> 
+        <!-- End table -->
+    </div> 
+    <!-- End content -->
+
+    <!-- Start JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="../js/main.js"></script>
+    <!-- End JS -->
+</body>
+</html>

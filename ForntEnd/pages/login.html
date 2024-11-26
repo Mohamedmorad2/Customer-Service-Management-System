@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="website icon" type="png" href="../Images/login.ico">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+
+
+<div class="login">
+    <div class="img">
+        <img src="../Images/Secure-login.png" alt="Secure Login Image">
+    </div>
+    <div class="content">
+        <h1>Welcome Back</h1>
+
+        <form id="login-form" method="POST" onsubmit="return validateForm()">
+            <div class="username-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required placeholder="UserName" aria-label="Username">
+            </div>
+
+            <div class="Password-group">
+                <label for="password">Password</label>
+                <div class="password-input">
+                    <input type="password" id="password" name="password" maxlength="12" required placeholder="Password" aria-label="Password">
+                    <img id="toggleEye" class="eye-icon" src="../Images/Eye Open.png" onclick="togglePassword()" alt="Toggle Password Visibility">
+                </div>
+            </div>
+
+            <div id="password-error" class="error-message"></div>
+            <button type="submit" id="login-btn">Login</button>
+
+        </form>
+    </div>
+</div>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>
+

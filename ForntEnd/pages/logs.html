@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../Images/log-file.png" rel="icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Logs</title>
+</head>
+<!-- Start header -->
+<header id="header">
+    <nav class="navbar">
+        <div class="logo-item">
+            <a href="../index.html" class="logo">Sprints (CSS)</a>
+            <!-- <a href="index.html" class="logo">Customer Service System Sprints (CSS)</a> -->
+            <div class="topbar">
+                <div class="toggle" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="link-item">
+            <ul class="navbar-nav">
+                <li class="header-item">
+                    <a href="./pages/dashboard.html" class="header-link">
+                        <img src="../Images/Dashboard.png" class="icon" alt="Dashboard">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="./pages/customers.html" class="header-link">
+                        <img src="../Images/social-network.png" class="icon" alt="Customers">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="./pages/order.html" class="header-link">
+                        <img src="../Images/checklist.png" class="icon" alt="Orders">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="./pages/total_expenses.html" class="header-link">
+                        <img src="../Images/spending.png" class="icon" alt="Expenses">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="./pages/total_sales.html" class="header-link">
+                        <img src="../Images/buy.png" class="icon" alt="Sales">
+                    </a>
+                </li>
+                
+                <li class="header-item">
+                    <a href="#" class="header-link">
+                        <img src="../Images/report.png" class="icon" alt="Reports">
+                    </a>
+                </li>
+
+                <li class="header-item">
+                    <a href="#" class="header-link">
+                        <img src="../Images/managing.png" class="icon" alt="Account Management">
+                    </a>
+                </li>
+
+                <li class="header-item dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        <img src="../Images/user.png" alt="Profile Icon" class="profile-icon"> Mohamed M. Morad
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="./pages/profile.html">Profile</a></li>
+                        <li><a class="dropdown-item-Logout" href="./pages/login.html">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- End header -->
+
+<body onload="toggleSidebar()">
+    <!-- Start sidebar -->
+    <div class="side_bar"> 
+        <aside id="sidebar" class="sidebar">
+            <ul class="sidebar-nav" id="sidebar-nav">
+                <!-- Start Dashboard -->
+                <li class="nav-item">
+                    <a class="nav-link" href="./pages/dashboard.html">
+                        <img src="../Images/Dashboard.png" alt="Dashboard">
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <!-- End Dashboard -->
+
+                <!-- Start Customers-->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="../Images/social-network.png" alt="Customers">
+                        <span>Customers</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#"><img src="../Images/add-Customer.png" alt="Add Customer">Add Customer</a></li>
+                        <li><a href="#"><img src="../Images/Customers.png" alt="Customers">Customers</a></li>
+                    </ul>
+                </li>
+                <!-- End Customers -->
+                
+                <!-- Start Orders -->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="../Images/checklist.png" alt="Orders">
+                        <span>Orders</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#"><img src="../Images/add-to-cart.png" alt="Add Order">Add Order</a></li>
+                        <li><a href="#"><img src="../Images/order.png" alt="Orders ">Orders</a></li>
+                    </ul>
+                </li>
+                <!-- End Orders  -->
+                
+                <!-- Start Finances -->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="../Images/hand.png" alt="Finances">
+                        <span>Finances</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#"><img src="../Images/wallet.png" alt="Add Expense">Add Expense</a></li>
+                        <li><a href="#"><img src="../Images/spending.png" alt="Total Expenses">Total Expenses</a></li>
+                        <li><a href="#"><img src="../Images/buy.png" alt="Total Sales">Total Sales</a></li>
+                    </ul>
+                </li>
+                <!-- End Finances -->
+
+                <!-- Start Reports -->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="../Images/report.png" alt="Reports">
+                        <span>Reports</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#"><img src="../Images/report.png" alt="Report Login">Report </a></li>
+                    </ul>
+                </li>
+                <!-- End Reports -->
+
+                <!-- Start Account Management -->
+                <li class="nav-item">
+                    <a class="nav-link toggle" href="#">
+                        <img src="../Images/managing.png" alt="Account Management">
+                        <span>Account Management</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#"><img src="../Images/add-user.png" alt="Add User">Add User</a></li>
+                        <li><a href="#"><img src="../Images/Users.png" alt="Users">Users</a></li>
+                        <li><a href="#"><img src="../Images/log-file.png" alt="Logs">Logs</a></li>
+                        <li><a href="#"><img src="../Images/permissions.png" alt="Permission">Permission</a></li>
+                    </ul>
+                </li>
+                <!-- End Account Management -->
+            </ul>
+        </aside>
+    </div>
+    <!-- End sidebar -->
+
+    <!-- Start content -->
+    <div class="content" id="mainContent">
+        <!-- Start search-filter -->
+        <section class="search-filter">
+            <!-- <h1>Search Filter</h1> -->
+            
+            <div class="filter-item">
+                <label for="Name">Name</label>
+                <input type="text" id="Name"  placeholder="Enter Name" >
+            </div>
+
+            <div class="filter-item">
+                <label for="User Name">Enter User Name </label>
+                <input type="text" id="user_name"  placeholder="Enter User Name" >
+            </div>
+
+            <div class="filter-item">
+                <label for="date">Date</label>
+                <input type="date" id="date">
+            </div>
+            
+            <div class="filter-actions">
+                <button class="btn search-btn">Search</button>
+            </div>
+        </section>
+        <!-- End search-filter -->
+        
+        <!-- Start table -->
+        <div class="table-container">
+            <section class="table">
+                <table id="example" class="cell-border" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th> Name </th>
+                            <th> User Name </th>
+                            <th> Code </th>
+                            <th> Data </th>
+                            <th> Process </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mohamed Ahmed</td>
+                            <td>Ahmed</td>
+                            <td>1</td>
+                            <td>04/09/2024 - 9:37pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Mohamed Ahmed</td>
+                            <td>Ahmed</td>
+                            <td>1</td>
+                            <td>04/09/2024 - 3:37pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Fatima Ali</td>
+                            <td>Fatima</td>
+                            <td>2</td>
+                            <td>04/09/2024 - 10:15am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Fatima Ali</td>
+                            <td>Fatima</td>
+                            <td>2</td>
+                            <td>04/09/2024 - 5:22pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Ahmed Youssef</td>
+                            <td>Ahmed</td>
+                            <td>3</td>
+                            <td>04/09/2024 - 11:30am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Ahmed Youssef</td>
+                            <td>Ahmed</td>
+                            <td>3</td>
+                            <td>04/09/2024 - 6:00pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Sara Mohamed</td>
+                            <td>Sara</td>
+                            <td>4</td>
+                            <td>04/09/2024 - 12:45pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Sara Mohamed</td>
+                            <td>Sara</td>
+                            <td>4</td>
+                            <td>04/09/2024 - 7:15pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Ali Hassan</td>
+                            <td>Ali</td>
+                            <td>5</td>
+                            <td>04/09/2024 - 1:00pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Ali Hassan</td>
+                            <td>Ali</td>
+                            <td>5</td>
+                            <td>04/09/2024 - 8:00pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Omar Ibrahim</td>
+                            <td>Omar</td>
+                            <td>6</td>
+                            <td>04/09/2024 - 2:15pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Omar Ibrahim</td>
+                            <td>Omar</td>
+                            <td>6</td>
+                            <td>04/09/2024 - 9:15pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Reem Khaled</td>
+                            <td>Reem</td>
+                            <td>7</td>
+                            <td>04/09/2024 - 3:30pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Reem Khaled</td>
+                            <td>Reem</td>
+                            <td>7</td>
+                            <td>04/09/2024 - 10:30pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Mohammed Fahmy</td>
+                            <td>Mohammed</td>
+                            <td>8</td>
+                            <td>04/09/2024 - 4:45pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Mohammed Fahmy</td>
+                            <td>Mohammed</td>
+                            <td>8</td>
+                            <td>04/09/2024 - 11:45pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Hala Amin</td>
+                            <td>Hala</td>
+                            <td>9</td>
+                            <td>04/09/2024 - 5:00pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Hala Amin</td>
+                            <td>Hala</td>
+                            <td>9</td>
+                            <td>04/09/2024 - 12:00am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Yusuf Ayman</td>
+                            <td>Yusuf</td>
+                            <td>10</td>
+                            <td>04/09/2024 - 6:15pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Yusuf Ayman</td>
+                            <td>Yusuf</td>
+                            <td>10</td>
+                            <td>04/09/2024 - 1:15am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Leila Hassan</td>
+                            <td>Leila</td>
+                            <td>11</td>
+                            <td>04/09/2024 - 7:30pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Leila Hassan</td>
+                            <td>Leila</td>
+                            <td>11</td>
+                            <td>04/09/2024 - 2:30am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Karim Said</td>
+                            <td>Karim</td>
+                            <td>12</td>
+                            <td>04/09/2024 - 8:45pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Karim Said</td>
+                            <td>Karim</td>
+                            <td>12</td>
+                            <td>04/09/2024 - 3:45am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Nour El-Sayed</td>
+                            <td>Nour</td>
+                            <td>13</td>
+                            <td>04/09/2024 - 9:00pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Nour El-Sayed</td>
+                            <td>Nour</td>
+                            <td>13</td>
+                            <td>04/09/2024 - 4:00am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Ola Ghanem</td>
+                            <td>Ola</td>
+                            <td>14</td>
+                            <td>04/09/2024 - 10:15pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Ola Ghanem</td>
+                            <td>Ola</td>
+                            <td>14</td>
+                            <td>04/09/2024 - 5:15am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Ramy Samir</td>
+                            <td>Ramy</td>
+                            <td>15</td>
+                            <td>04/09/2024 - 11:30pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Ramy Samir</td>
+                            <td>Ramy</td>
+                            <td>15</td>
+                            <td>04/09/2024 - 6:30am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Huda Ayman</td>
+                            <td>Huda</td>
+                            <td>16</td>
+                            <td>04/09/2024 - 12:45am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Huda Ayman</td>
+                            <td>Huda</td>
+                            <td>16</td>
+                            <td>04/09/2024 - 7:45am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Ahmed Gamal</td>
+                            <td>Ahmed</td>
+                            <td>17</td>
+                            <td>04/09/2024 - 1:00am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Ahmed Gamal</td>
+                            <td>Ahmed</td>
+                            <td>17</td>
+                            <td>04/09/2024 - 8:00am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Salma Hussein</td>
+                            <td>Salma</td>
+                            <td>18</td>
+                            <td>04/09/2024 - 2:15am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Salma Hussein</td>
+                            <td>Salma</td>
+                            <td>18</td>
+                            <td>04/09/2024 - 9:15am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Mohamed Khaled</td>
+                            <td>Mohamed</td>
+                            <td>19</td>
+                            <td>04/09/2024 - 3:30am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Mohamed Khaled</td>
+                            <td>Mohamed</td>
+                            <td>19</td>
+                            <td>04/09/2024 - 10:30am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Rania Ahmed</td>
+                            <td>Rania</td>
+                            <td>20</td>
+                            <td>04/09/2024 - 4:45am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Rania Ahmed</td>
+                            <td>Rania</td>
+                            <td>20</td>
+                            <td>04/09/2024 - 11:45am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Youssef Ibrahim</td>
+                            <td>Youssef</td>
+                            <td>21</td>
+                            <td>04/09/2024 - 5:00am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Youssef Ibrahim</td>
+                            <td>Youssef</td>
+                            <td>21</td>
+                            <td>04/09/2024 - 12:00pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Hesham Ali</td>
+                            <td>Hesham</td>
+                            <td>22</td>
+                            <td>04/09/2024 - 6:15am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Hesham Ali</td>
+                            <td>Hesham</td>
+                            <td>22</td>
+                            <td>04/09/2024 - 1:15pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Nadine Ghanem</td>
+                            <td>Nadine</td>
+                            <td>23</td>
+                            <td>04/09/2024 - 7:30am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Nadine Ghanem</td>
+                            <td>Nadine</td>
+                            <td>23</td>
+                            <td>04/09/2024 - 2:30pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Khalid El-Sayed</td>
+                            <td>Khalid</td>
+                            <td>24</td>
+                            <td>04/09/2024 - 8:45am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Khalid El-Sayed</td>
+                            <td>Khalid</td>
+                            <td>24</td>
+                            <td>04/09/2024 - 3:45pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Rami Abdel</td>
+                            <td>Rami</td>
+                            <td>25</td>
+                            <td>04/09/2024 - 9:00am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Rami Abdel</td>
+                            <td>Rami</td>
+                            <td>25</td>
+                            <td>04/09/2024 - 4:00pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Amal Samir</td>
+                            <td>Amal</td>
+                            <td>26</td>
+                            <td>04/09/2024 - 10:15am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Amal Samir</td>
+                            <td>Amal</td>
+                            <td>26</td>
+                            <td>04/09/2024 - 5:15pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Mohamed Tamer</td>
+                            <td>Mohamed</td>
+                            <td>27</td>
+                            <td>04/09/2024 - 11:30am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Mohamed Tamer</td>
+                            <td>Mohamed</td>
+                            <td>27</td>
+                            <td>04/09/2024 - 6:30pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Amr Ahmed</td>
+                            <td>Amr</td>
+                            <td>28</td>
+                            <td>04/09/2024 - 12:45pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Amr Ahmed</td>
+                            <td>Amr</td>
+                            <td>28</td>
+                            <td>04/09/2024 - 7:45pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Mai Mahmoud</td>
+                            <td>Mai</td>
+                            <td>29</td>
+                            <td>04/09/2024 - 1:00pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Mai Mahmoud</td>
+                            <td>Mai</td>
+                            <td>29</td>
+                            <td>04/09/2024 - 8:00pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Yasser Mohamed</td>
+                            <td>Yasser</td>
+                            <td>30</td>
+                            <td>04/09/2024 - 2:15pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Yasser Mohamed</td>
+                            <td>Yasser</td>
+                            <td>30</td>
+                            <td>04/09/2024 - 9:15pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Hassan Ibrahim</td>
+                            <td>Hassan</td>
+                            <td>31</td>
+                            <td>04/09/2024 - 3:30pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Hassan Ibrahim</td>
+                            <td>Hassan</td>
+                            <td>31</td>
+                            <td>04/09/2024 - 10:30pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Salma Ali</td>
+                            <td>Salma</td>
+                            <td>32</td>
+                            <td>04/09/2024 - 4:45pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Salma Ali</td>
+                            <td>Salma</td>
+                            <td>32</td>
+                            <td>04/09/2024 - 11:45pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Mohamed Farouk</td>
+                            <td>Mohamed</td>
+                            <td>33</td>
+                            <td>04/09/2024 - 5:00pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Mohamed Farouk</td>
+                            <td>Mohamed</td>
+                            <td>33</td>
+                            <td>04/09/2024 - 12:00am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Ahmed Adel</td>
+                            <td>Ahmed</td>
+                            <td>34</td>
+                            <td>04/09/2024 - 6:15pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Ahmed Adel</td>
+                            <td>Ahmed</td>
+                            <td>34</td>
+                            <td>04/09/2024 - 1:15am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Nora Youssef</td>
+                            <td>Nora</td>
+                            <td>35</td>
+                            <td>04/09/2024 - 7:30pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Nora Youssef</td>
+                            <td>Nora</td>
+                            <td>35</td>
+                            <td>04/09/2024 - 2:30am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Omar Hassan</td>
+                            <td>Omar</td>
+                            <td>36</td>
+                            <td>04/09/2024 - 8:45pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Omar Hassan</td>
+                            <td>Omar</td>
+                            <td>36</td>
+                            <td>04/09/2024 - 3:45am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Rania Mohamed</td>
+                            <td>Rania</td>
+                            <td>37</td>
+                            <td>04/09/2024 - 9:00pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Rania Mohamed</td>
+                            <td>Rania</td>
+                            <td>37</td>
+                            <td>04/09/2024 - 4:00am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Rami Ahmed</td>
+                            <td>Rami</td>
+                            <td>38</td>
+                            <td>04/09/2024 - 10:15pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Rami Ahmed</td>
+                            <td>Rami</td>
+                            <td>38</td>
+                            <td>04/09/2024 - 5:15am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Mohamed Hassan</td>
+                            <td>Mohamed</td>
+                            <td>39</td>
+                            <td>04/09/2024 - 11:30pm</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Mohamed Hassan</td>
+                            <td>Mohamed</td>
+                            <td>39</td>
+                            <td>04/09/2024 - 6:30am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Ahmed Khaled</td>
+                            <td>Ahmed</td>
+                            <td>40</td>
+                            <td>04/09/2024 - 12:45am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Ahmed Khaled</td>
+                            <td>Ahmed</td>
+                            <td>40</td>
+                            <td>04/09/2024 - 7:45am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Youssef Ahmed</td>
+                            <td>Youssef</td>
+                            <td>41</td>
+                            <td>04/09/2024 - 1:00am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Youssef Ahmed</td>
+                            <td>Youssef</td>
+                            <td>41</td>
+                            <td>04/09/2024 - 8:00am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Mai Ahmed</td>
+                            <td>Mai</td>
+                            <td>42</td>
+                            <td>04/09/2024 - 2:15am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Mai Ahmed</td>
+                            <td>Mai</td>
+                            <td>42</td>
+                            <td>04/09/2024 - 9:15am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Hesham Ahmed</td>
+                            <td>Hesham</td>
+                            <td>43</td>
+                            <td>04/09/2024 - 3:30am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Hesham Ahmed</td>
+                            <td>Hesham</td>
+                            <td>43</td>
+                            <td>04/09/2024 - 10:30am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Salma Ahmed</td>
+                            <td>Salma</td>
+                            <td>44</td>
+                            <td>04/09/2024 - 4:45am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Salma Ahmed</td>
+                            <td>Salma</td>
+                            <td>44</td>
+                            <td>04/09/2024 - 11:45am</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Mohamed Ali</td>
+                            <td>Mohamed</td>
+                            <td>45</td>
+                            <td>04/09/2024 - 5:00am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Mohamed Ali</td>
+                            <td>Mohamed</td>
+                            <td>45</td>
+                            <td>04/09/2024 - 12:00pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Rania Ali</td>
+                            <td>Rania</td>
+                            <td>46</td>
+                            <td>04/09/2024 - 6:15am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Rania Ali</td>
+                            <td>Rania</td>
+                            <td>46</td>
+                            <td>04/09/2024 - 1:15pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Youssef Ali</td>
+                            <td>Youssef</td>
+                            <td>47</td>
+                            <td>04/09/2024 - 7:30am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Youssef Ali</td>
+                            <td>Youssef</td>
+                            <td>47</td>
+                            <td>04/09/2024 - 2:30pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Hesham Khaled</td>
+                            <td>Hesham</td>
+                            <td>48</td>
+                            <td>04/09/2024 - 8:45am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Hesham Khaled</td>
+                            <td>Hesham</td>
+                            <td>48</td>
+                            <td>04/09/2024 - 3:45pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Amal Ahmed</td>
+                            <td>Amal</td>
+                            <td>49</td>
+                            <td>04/09/2024 - 9:00am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Amal Ahmed</td>
+                            <td>Amal</td>
+                            <td>49</td>
+                            <td>04/09/2024 - 4:00pm</td>
+                            <td>Logout</td>
+                        </tr>
+                        <tr>
+                            <td>Hossam Ali</td>
+                            <td>Hossam</td>
+                            <td>50</td>
+                            <td>04/09/2024 - 10:15am</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td>Hossam Ali</td>
+                            <td>Hossam</td>
+                            <td>50</td>
+                            <td>04/09/2024 - 5:15pm</td>
+                            <td>Logout</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </section> 
+        </div>
+        <!-- End table -->
+    </div>
+    <!-- End content -->
+
+    <!-- Start JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="../js/main.js"></script>
+
+    <!-- End JS -->
+</body>
+</html>
