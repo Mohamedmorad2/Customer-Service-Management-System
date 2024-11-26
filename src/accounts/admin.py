@@ -2,13 +2,12 @@ from django.contrib import admin
 from .models import CustomUser
 from .models import Log
 from .models import UserAction
-from unfold.admin import ModelAdmin
 
 
 
-class LogsAdmin(ModelAdmin):
+class LogsAdmin(admin.ModelAdmin):
     list_display = ['id' ,'user_id','user','first_name' ,'action' ,'timestamp']
-class UserActionAdmin(ModelAdmin):
+class UserActionAdmin(admin.ModelAdmin):
     list_display = ['id' ,'user_id','user','action_type' ,'action_time' ,'code' ,'app_name','details']
 
     # Register your models here.

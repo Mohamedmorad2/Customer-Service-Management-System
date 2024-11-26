@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -161,8 +160,3 @@ EMAIL_HOST_USER = 'mohamedmoradcom374@gmail.com'
 EMAIL_HOST_PASSWORD = 'cgqf chqg hhmx rdmz' 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-UNFOLD = {
-    "SITE_TITLE": "Customer Service System Admin (CSS)",
-    "SITE_HEADER": "Customer Service Admin ",
-
-}
