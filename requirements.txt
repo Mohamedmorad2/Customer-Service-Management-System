@@ -1,0 +1,7 @@
+Django==4.2
+djangorestframework==3.14.0 
+<<<<<<< HEAD
+django-environ==0.8.1 
+=======
+django-environ==0.8.1 
+>>>>>>> 6d331945ae6655da4132bf6d1f43021a6eb8fb35
