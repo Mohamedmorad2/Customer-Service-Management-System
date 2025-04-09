@@ -1,1 +1,2 @@
 Customer-Service-Management-System
+Our system delivers streamlined product management with precise order tracking and automated expense calculation, saving you valuable time and effort. It also provides clear customer review analysis through a fast, intuitive interface designed for all users. The system is built using modern technologies including HTML5, CSS3, JavaScript, Python, and the Django framework to ensure a responsive, scalable, and efficient user experience.
